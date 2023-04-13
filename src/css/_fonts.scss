@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+@font-face {
+    font-family: "NeoRegular";
+    src: url(../../public/fonts/NeometricRegular.otf);
+}
+@font-face {
+    font-family: "NeoBold";
+    src: url(../../public/fonts/NeometricBold.otf);
+}
+@font-face {
+    font-family: "NeoMedium";
+    src: url(../../public/fonts/NeometricMedium.otf);
+}
+@font-face {
+    font-family: "NeoLight";
+    src: url(../../public/fonts/NeometricLight.otf);
+}
+
+h1{
+    font-family: "NeoMedium";
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 120%;
+    margin-bottom: 40px;
+}
+
+h2{
+    font-family: "NeoMedium";
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 120%;
+    margin-bottom: 24px;
+}
+
+h3{
+    font-family: "NeoBold";
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 160%;
+    margin-bottom: 12px;
+}
+
+h4{
+    font-family: "NeoBold";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 160%;
+    margin-bottom: 12px;
+}
+
+h5{
+    font-family: "NeoBold";
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 160%;
+    margin-bottom: 12px;
+}
+
+p{
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    margin-bottom: 16px;
+}
+
+.small{
+    font-size: 14px;
+}
+
+a{
+    font-family: "NeoMedium";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 160%;
+    margin-bottom: 16px;
+    text-decoration: none;
+}

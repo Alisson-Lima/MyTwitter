@@ -1,0 +1,186 @@
+.nav_container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 400px;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #120F1A;
+}
+.nav_container .thumbnail {
+  display: block;
+  position: relative;
+  height: 180px;
+  width: 100%;
+  background: #3E1C98;
+  margin-bottom: 72px;
+}
+.nav_container ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+.nav_container ul li {
+  display: block;
+  width: 100%;
+}
+.nav_container ul li a {
+  display: flex;
+  padding: 16px 32px;
+  width: 100%;
+  margin: 0;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 28px;
+  font-size: 24px;
+  color: #969499;
+  transition: 0.2s;
+}
+.nav_container ul li a span {
+  transition: 0.2s;
+}
+.nav_container ul li a svg {
+  transition: 0.2s;
+}
+.nav_container ul li a svg path {
+  transition: 0.2s;
+}
+.nav_container ul li a:hover {
+  background: #1C1924;
+}
+.nav_container ul li a:hover span {
+  transform: translateX(12px);
+  transition-delay: 0.1s;
+}
+.nav_container ul li a:hover svg {
+  transform: translateX(8px);
+}
+.nav_container ul li a:hover svg path {
+  fill: #5B29E5;
+}
+.nav_container ul li button {
+  display: flex;
+  padding: 16px 32px;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 28px;
+  font-size: 24px;
+  color: #969499;
+  transition: 0.2s;
+  font-family: "NeoMedium";
+  font-weight: 400;
+  line-height: 160%;
+}
+.nav_container ul li button span {
+  transition: transform 0.2s;
+}
+.nav_container ul li button svg {
+  transition: 0.2s;
+}
+.nav_container ul li button svg path {
+  transition: 0.2s;
+}
+.nav_container ul li button:hover {
+  background: #FF3535;
+  color: #0A0810;
+}
+.nav_container ul li button:hover svg path {
+  fill: #0A0810;
+}
+.nav_container ul li button:hover span {
+  transform: translateX(12px);
+  transition-delay: 0.1s;
+}
+.nav_container ul li button:hover svg {
+  transform: translateX(8px);
+}
+.nav_container .svg_footer {
+  width: 120px;
+  position: absolute;
+  bottom: 40px;
+}
+
+.logout_dialog_box_container {
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.123);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transition: 0.2s;
+}
+.logout_dialog_box_container .logout_dialog_box {
+  opacity: 0;
+  transition: 0.5s;
+  transition-delay: 3s;
+  width: 100%;
+  text-align: center;
+  max-width: 350px;
+  padding: 24px;
+  background: #1C1924;
+  border-radius: 8px;
+}
+.logout_dialog_box_container .logout_dialog_box h4 {
+  margin-bottom: 32px;
+}
+.logout_dialog_box_container .logout_dialog_box .btn_dialog {
+  padding: 16px 24px;
+  margin: 0 4px;
+  border: transparent;
+  border-radius: 8px;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: #535059;
+  color: #AEADB2;
+  font-family: "Montserrat";
+  font-weight: 600;
+  transition: 0.2s;
+}
+.logout_dialog_box_container .logout_dialog_box .btn_dialog:hover {
+  background: #FF3535;
+  color: #0A0810;
+}
+.logout_dialog_box_container .logout_dialog_box .btn_dialog:last-child {
+  background: #3E1C98;
+}
+.logout_dialog_box_container .logout_dialog_box .btn_dialog:last-child:hover {
+  filter: brightness(1.2);
+  color: #AEADB2;
+}
+
+.opened {
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.5s;
+}
+.opened .logout_dialog_box {
+  transition: 0.5s;
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.closed {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.closed .logout_dialog_box {
+  transition: 0.5s;
+  transform: scale(0.8);
+  opacity: 0;
+}

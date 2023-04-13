@@ -1,0 +1,98 @@
+@import "../../css/colors";
+
+.type_tweet{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 72px;
+
+    img{
+        max-width: 80px;
+    }
+
+    input{
+        display: block;
+        width: 100%;
+        padding: 16px 0;
+        max-width: 370px;
+        background: transparent;
+        color: $gray9;
+        border: transparent;
+        border-bottom: 2px solid $gray4;
+        outline: transparent;
+        font-size: 16px;
+        font-family: "Montserrat";
+        transition: .2s;
+
+        &::placeholder{
+            color: $gray6;
+        }
+
+        &:focus{
+            border-bottom-color: $purple-light;
+        }
+    }
+
+    button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        border: none;
+        background: $purple-light;
+        transition: .4s;
+
+        svg{
+            position: relative;
+            left: -2px;
+        }
+
+        &:hover{
+            filter: brightness(1.2);
+        }
+    }
+}
+
+.tweets{
+    margin-bottom: 32px;
+}
+
+.tweet{
+    padding: 32px;
+    background: $gray2;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    .header{
+        display: flex;
+        align-items: center;
+        margin-bottom: 28px;
+        span{
+            margin-left: 32px;
+            h4, p{
+                margin: 0;
+            }
+            p{
+                color: $gray7;
+            }
+        }
+    }
+
+    p{
+        margin-left: 82px;
+    }
+
+    img{
+        max-width: 50px;
+    }
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
+
+hr{
+    margin-bottom: 48px;
+    border: 1px solid $gray3;
+}

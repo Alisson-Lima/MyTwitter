@@ -1,0 +1,177 @@
+// @import "../../css/fonts.scss";
+@import "../../css/colors.scss";
+
+@keyframes message {
+    10%,70%{
+        right: 32px;
+        bottom: 32px;
+        opacity: 1;
+    }75%{
+
+        right: 32px;
+    }100%{
+        bottom: 104px;
+        right: 32px;
+        opacity: 0;
+    }
+}
+
+.loginRegister{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    min-height: 600px;
+    border-radius: 8px;
+    background: $gray2;
+    margin: calc(50vh - 300px) auto 0;
+    padding: 64px 50px 32px;
+    box-shadow: 0px 43px 82px rgba(0, 0, 0, 0.16), 0px 23.9816px 34.2576px rgba(0, 0, 0, 0.115017), 0px 13.8447px 18.3158px rgba(0, 0, 0, 0.0953772), 0px 7.74762px 10.2677px rgba(0, 0, 0, 0.08), 0px 3.87654px 5.45308px rgba(0, 0, 0, 0.0646228), 0px 1.43453px 2.26915px rgba(0, 0, 0, 0.0449833);
+    transition: .5s;
+    .navLoginRegister{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 32px;
+        h3{
+            font-size: 24px;
+            color: $gray6;
+            margin: 0 16px;
+            cursor: pointer;
+            transition: .4s;
+            position: relative;
+            &::after{
+                content: "";
+                position: relative;
+                display: block;
+                width: 0;
+                height: 5px;
+                margin: auto;
+                transition: .3s;
+                margin-top: 8px;
+            }
+        }
+
+        .sideActived{
+            color: $gray9;
+
+            &::after{
+                width: 80%;
+                height: 5px;
+                background: $purple-light;
+                border-radius: 8px;
+            }
+        }
+    }
+    .form_side{
+        width: 100%;
+        position: relative;
+        form{
+            display: flex;
+            flex-direction: column;
+
+            label{
+                width: 100%;
+                margin-bottom: 16px;
+                span{
+                    margin-bottom: 16px;
+                    display: inline-block;
+                    color: $gray6;
+                    font-family: "Montserrat";
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+                input{
+                    display: block;
+                    width: 100%;
+                    height: 64px;
+                    border-radius: 8px;
+                    padding: 32px 22px;
+                    border: none;
+                    background: $gray3;
+                    color: $gray7;
+                    font-size: 16px;
+                    transition: .4s;
+                    &::placeholder{
+                        color: $gray7;
+                    }
+                    &:focus{
+                        background: $gray4;
+                    }
+                }
+            }
+            label.check{
+                width: 100%;
+                margin-bottom: 16px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                input[type="checkbox"]{
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                }
+                span{
+                    // display: inline-block;
+                    position: relative;
+                    top: 8px;
+                    margin-left: 16px;
+                }
+            }
+            input[type="submit"], button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                height: 64px;
+                background: $gradient-horizontal;
+                border-radius: 8px;
+                border: none;
+                font-size: 18px;
+                color: $gray9;
+                cursor: pointer;
+                text-transform: uppercase;
+                transition: .4s;
+                &:hover{
+                    filter: brightness(1.2);
+                }
+            }
+        }
+
+        .btn-loading{
+            background: $gray5;
+        }
+    }
+    svg{
+        margin-top: 40px;
+        width: 120px;
+    }
+    .errorMessage{
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 300px;
+        padding: 16px;
+        bottom: 32px;
+        right: -300px;
+        background-color: #ff353585;
+        border: 2px solid $red;
+        
+        text-align: center;
+        font-family: "Montserrat";
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 160%;
+        margin-bottom: 16px;
+
+        backdrop-filter: blur(10px);
+        border-radius: 8px;
+
+        animation: message 5s ease-out forwards;
+    }
+}

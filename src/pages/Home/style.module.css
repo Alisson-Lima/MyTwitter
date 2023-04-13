@@ -1,0 +1,89 @@
+.type_tweet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 72px;
+}
+.type_tweet img {
+  max-width: 80px;
+}
+.type_tweet input {
+  display: block;
+  width: 100%;
+  padding: 16px 0;
+  max-width: 370px;
+  background: transparent;
+  color: #AEADB2;
+  border: transparent;
+  border-bottom: 2px solid #26232E;
+  outline: transparent;
+  font-size: 16px;
+  font-family: "Montserrat";
+  transition: 0.2s;
+}
+.type_tweet input::-moz-placeholder {
+  color: #535059;
+}
+.type_tweet input::placeholder {
+  color: #535059;
+}
+.type_tweet input:focus {
+  border-bottom-color: #5B29E5;
+}
+.type_tweet button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  background: #5B29E5;
+  transition: 0.4s;
+}
+.type_tweet button svg {
+  position: relative;
+  left: -2px;
+}
+.type_tweet button:hover {
+  filter: brightness(1.2);
+}
+
+.tweets {
+  margin-bottom: 32px;
+}
+
+.tweet {
+  padding: 32px;
+  background: #120F1A;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.tweet .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.tweet .header span {
+  margin-left: 32px;
+}
+.tweet .header span h4, .tweet .header span p {
+  margin: 0;
+}
+.tweet .header span p {
+  color: #6E6D73;
+}
+.tweet p {
+  margin-left: 82px;
+}
+.tweet img {
+  max-width: 50px;
+}
+.tweet:last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  margin-bottom: 48px;
+  border: 1px solid #1C1924;
+}

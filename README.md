@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+# Começando com o Firebase
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**-- 1 Iniciando projeto --**
 
-## Available Scripts
+1.1 - Instalar o firebase no seu projeto: ` npm i firebase `
 
-In the project directory, you can run:
+1.2 - Integrar firebase no seu projeto: ` Adicione um app web no seu projeto e copie os SDKs para uma pasta src/firebase/config.js do seu projeto`
 
-### `npm start`
+1.3 - Configure o banco de dados: `const db = getFirestore(app)`
+# O método getFireStore precisa ser importado de firebase/firestore
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1.4 - Exporte o banco de dados: `export { db }`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+------------------------------------------------------------
 
-### `npm test`
+**-- 2 Hook de authentication --**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2.1 - Criar um hook e importar a dependência: `getAuth` do firebase/auth
 
-### `npm run build`
+2.2 - importar db da pasta firebase/config
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2.3 Criar varivel auth: `const auth = getAuth()`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**-- 3 Registro de usuário --**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3.1 - criar função *createUser* e importar as dependências: `createUserWithEmailAndPassword, updateProfile`
 
-### `npm run eject`
+3.2 - criar variável com o hook createUserWithEmailAndPassword, utilizar a variável auth e os outros dados do usuário: 
+`const {user} = await createUserWithEmailAndPassword(auth, data.email, data.password)`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3.3 - fazer atualização do usuário no banco de dados: `await updateProfile(user, {displayName: data.name})`
+*displayName já é padrão do sistema*
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3.4 - Retornar `user` no fim da função
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<!-- createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut -->
+-------------------------------------------------------------
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**-- 4 Logout --**
 
-## Learn More
+4.1 - Importar hook signOut: `import {signOut} from "firebase/auth"`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4.2 - Criar função logout: `const logout = () => {}`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4.3 - Adicionar à função o hook *signOut* passando *auth* como parâmetro: `const logout = () => { signOut(auth) }`
 
-### Code Splitting
+4.4 - Exportar função no final do hook
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+-------------------------------------------------------------
 
-### Analyzing the Bundle Size
+**-- 5 Login --**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+5.1 - Importar o hook *signInWithEmailAndPassword*: `import {signInWithEmailAndPassword} from "firebase/auth"`
 
-### Making a Progressive Web App
+5.2 - Criar função de login assíncrona com o parâmetro data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+5.3 - adicionar à função o hook *signInWithEmailAndPassword* passando os parâmetros de autenticação, email e senha:
 
-### Advanced Configuration
+`const signIn = async (data) => {`
+`    await signInWithEmailAndPassword(auth, data.name, data.password)`
+`}`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+5.4 - Exportar função no final do hook
 
-### Deployment
+-------------------------------------------------------------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**-- Utilizar autenticação no App --**
 
-### `npm run build` fails to minify
+1.1 - Importar a dependência onAuthStateChanged: `import {onAuthStateChanged} from "firebase/auth"`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1.2 - Importar o hook de autenticação criado anteriormente e utilizar a variável *auth*: `const {auth} = useAuthentication()`
+
+1.3 - Criar uma variável user atribuir o valor undefined: `const [user, setUser] = useState(undefined)`
+
+1.4 - Fazer verificação lógica para loading do usuário: 
+
+`const loadingUser = user === undefined`
+`if(loadingUser){return <p>Carregando...</p>}`
+
+1.5 - Mapear o usuário para saber se está autenticado ou não:
+
+`   useEffect(()=>{`
+`      onAuthStateChanged(auth, (user) => setUser(user))`
+`   },[auth])`
+
+1.6 - Utilizar user no value do context do App.js: `<AuthProvider value{{user}}>...</AuthProvider>`
+
+-------------------------------------------------------------
+

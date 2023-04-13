@@ -1,0 +1,169 @@
+@keyframes message {
+  10%, 70% {
+    right: 32px;
+    bottom: 32px;
+    opacity: 1;
+  }
+  75% {
+    right: 32px;
+  }
+  100% {
+    bottom: 104px;
+    right: 32px;
+    opacity: 0;
+  }
+}
+.loginRegister {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  min-height: 600px;
+  border-radius: 8px;
+  background: #120F1A;
+  margin: calc(50vh - 300px) auto 0;
+  padding: 64px 50px 32px;
+  box-shadow: 0px 43px 82px rgba(0, 0, 0, 0.16), 0px 23.9816px 34.2576px rgba(0, 0, 0, 0.115017), 0px 13.8447px 18.3158px rgba(0, 0, 0, 0.0953772), 0px 7.74762px 10.2677px rgba(0, 0, 0, 0.08), 0px 3.87654px 5.45308px rgba(0, 0, 0, 0.0646228), 0px 1.43453px 2.26915px rgba(0, 0, 0, 0.0449833);
+  transition: 0.5s;
+}
+.loginRegister .navLoginRegister {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 32px;
+}
+.loginRegister .navLoginRegister h3 {
+  font-size: 24px;
+  color: #535059;
+  margin: 0 16px;
+  cursor: pointer;
+  transition: 0.4s;
+  position: relative;
+}
+.loginRegister .navLoginRegister h3::after {
+  content: "";
+  position: relative;
+  display: block;
+  width: 0;
+  height: 5px;
+  margin: auto;
+  transition: 0.3s;
+  margin-top: 8px;
+}
+.loginRegister .navLoginRegister .sideActived {
+  color: #AEADB2;
+}
+.loginRegister .navLoginRegister .sideActived::after {
+  width: 80%;
+  height: 5px;
+  background: #5B29E5;
+  border-radius: 8px;
+}
+.loginRegister .form_side {
+  width: 100%;
+  position: relative;
+}
+.loginRegister .form_side form {
+  display: flex;
+  flex-direction: column;
+}
+.loginRegister .form_side form label {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.loginRegister .form_side form label span {
+  margin-bottom: 16px;
+  display: inline-block;
+  color: #535059;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+}
+.loginRegister .form_side form label input {
+  display: block;
+  width: 100%;
+  height: 64px;
+  border-radius: 8px;
+  padding: 32px 22px;
+  border: none;
+  background: #1C1924;
+  color: #6E6D73;
+  font-size: 16px;
+  transition: 0.4s;
+}
+.loginRegister .form_side form label input::-moz-placeholder {
+  color: #6E6D73;
+}
+.loginRegister .form_side form label input::placeholder {
+  color: #6E6D73;
+}
+.loginRegister .form_side form label input:focus {
+  background: #26232E;
+}
+.loginRegister .form_side form label.check {
+  width: 100%;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.loginRegister .form_side form label.check input[type=checkbox] {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+.loginRegister .form_side form label.check span {
+  position: relative;
+  top: 8px;
+  margin-left: 16px;
+}
+.loginRegister .form_side form input[type=submit], .loginRegister .form_side form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 64px;
+  background: linear-gradient(90deg, #5B29E5 0%, #291266 133%);
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  color: #AEADB2;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+.loginRegister .form_side form input[type=submit]:hover, .loginRegister .form_side form button:hover {
+  filter: brightness(1.2);
+}
+.loginRegister .form_side .btn-loading {
+  background: #393640;
+}
+.loginRegister svg {
+  margin-top: 40px;
+  width: 120px;
+}
+.loginRegister .errorMessage {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  padding: 16px;
+  bottom: 32px;
+  right: -300px;
+  background-color: rgba(255, 53, 53, 0.5215686275);
+  border: 2px solid #FF3535;
+  text-align: center;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  margin-bottom: 16px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 8px;
+  animation: message 5s ease-out forwards;
+}
