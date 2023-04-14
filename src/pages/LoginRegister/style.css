@@ -167,3 +167,10 @@
   border-radius: 8px;
   animation: message 5s ease-out forwards;
 }
+
+@media screen and (max-width: 411px) {
+  .loginRegister {
+    max-width: 310px;
+    padding: 64px 24px 32px;
+  }
+}
