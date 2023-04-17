@@ -1,0 +1,129 @@
+@import "../../css/colors";
+
+.perfil_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 400px;
+    padding: 40px 56px;
+    background: $gray2;
+    border-radius: 8px;
+    border: 2px solid $gray3;
+
+    .avatar img{
+        max-width: 232px;
+    }
+
+    .info_user{
+        span{
+            display: block;
+            font-family: "Montserrat";
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 160%;
+            color: $gray6;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .input_info{
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            max-width: 170px;
+            height: 32px;
+            margin-bottom: 20px;
+            input{
+                display: block;
+                width: 100%;
+                font-size: 20px;
+                height: 100%;
+                background: $gray3;
+                color: $gray6;
+                border-radius: 8px;
+                border: none;
+                padding: 10px 16px;
+            }
+            button{
+                display: block;
+                position: absolute;
+                right: 0;
+                height: 100%;
+                padding: 0 12px;
+                background: transparent;
+                border: none;
+                svg{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 18px;
+                }
+            }
+        }
+        h3{
+            margin: 0;
+            line-height: 100%;
+            margin-bottom: 20px;
+            color: $gray9;
+        }
+        p{
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            margin-bottom: 20px;
+            svg{
+                margin-right: 12px;
+            }            
+        }
+        button.btn_edit{
+            display: flex;
+            align-items: center;
+            width: auto;
+            position: relative;
+            text-align: left;
+            font-size: 16px;
+            font-family: "Montserrat";
+            font-weight: 500;
+            background: transparent;
+            border: none;
+            color: $gray9;
+            cursor: pointer;
+
+            svg{
+                margin-right: 12px;
+            } 
+
+            &::after{
+                content: "";
+                position: absolute;
+                display: block;
+                width: 0;
+                height: 3px;
+                left: 26px;
+                bottom: -8px;
+                background: $gray9;
+                transition: .4s;
+            }
+
+            &:hover::after{
+                content: "";
+                position: absolute;
+                display: block;
+                left: 26px;
+                bottom: -8px;
+                width: calc(100% - 26px);
+                height: 3px;
+                border-radius: 8px;
+                background: $gray9;
+            }
+        }
+    }
+
+}
+
+h3{
+    margin: 56px 0 24px;
+    color: $gray6;
+}

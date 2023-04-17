@@ -1,8 +1,8 @@
 .type_tweet {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 72px;
+  gap: 40px;
 }
 .type_tweet img {
   max-width: 80px;
@@ -11,7 +11,6 @@
   display: block;
   width: 100%;
   padding: 16px 0;
-  max-width: 370px;
   background: transparent;
   color: #AEADB2;
   border: transparent;
@@ -34,7 +33,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
+  width: 100%;
+  min-width: 50px;
   height: 50px;
   border-radius: 8px;
   border: none;
@@ -48,39 +48,27 @@
 .type_tweet button:hover {
   filter: brightness(1.2);
 }
+.type_tweet .inputs {
+  width: 100%;
+  display: grid;
+  gap: 24px;
+  grid-template-areas: "a a a" "b b c";
+}
+.type_tweet .inputs input:nth-child(1) {
+  grid-area: a;
+}
+.type_tweet .inputs input:nth-child(2) {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  grid-area: b;
+}
+.type_tweet .inputs button {
+  grid-area: c;
+}
 
 .tweets {
   margin-bottom: 32px;
-}
-
-.tweet {
-  padding: 32px;
-  background: #120F1A;
-  border-radius: 8px;
-  margin-bottom: 24px;
-}
-.tweet .header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 28px;
-}
-.tweet .header span {
-  margin-left: 32px;
-}
-.tweet .header span h4, .tweet .header span p {
-  margin: 0;
-}
-.tweet .header span p {
-  color: #6E6D73;
-}
-.tweet p {
-  margin-left: 82px;
-}
-.tweet img {
-  max-width: 50px;
-}
-.tweet:last-child {
-  margin-bottom: 0;
 }
 
 hr {

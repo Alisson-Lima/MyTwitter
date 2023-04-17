@@ -1,0 +1,34 @@
+@import "../../css/colors";
+
+.tweet{
+    padding: 32px;
+    background: $gray2;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    .header{
+        display: flex;
+        align-items: center;
+        margin-bottom: 28px;
+        span{
+            margin-left: 32px;
+            h4, p{
+                margin: 0;
+            }
+            p{
+                color: $gray7;
+            }
+        }
+    }
+
+    p{
+        margin-left: 82px;
+    }
+
+    img{
+        max-width: 50px;
+    }
+
+    &:last-child{
+        margin-bottom: 0;
+    }
+}

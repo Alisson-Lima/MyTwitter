@@ -1,0 +1,29 @@
+.tweet {
+  padding: 32px;
+  background: #120F1A;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+.tweet .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.tweet .header span {
+  margin-left: 32px;
+}
+.tweet .header span h4, .tweet .header span p {
+  margin: 0;
+}
+.tweet .header span p {
+  color: #6E6D73;
+}
+.tweet p {
+  margin-left: 82px;
+}
+.tweet img {
+  max-width: 50px;
+}
+.tweet:last-child {
+  margin-bottom: 0;
+}
