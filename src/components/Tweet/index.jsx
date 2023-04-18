@@ -1,18 +1,18 @@
 import styles from "./style.module.css"
 
-const Tweet = () => {
+const Tweet = ({data}) => {
   return (
     <div className={styles.tweet}>
         <div className={styles.header}>
         <div className="avatar">
-            <img src="./img/avatar2.png" alt="" />
+            <img src={data.userAvatar} alt="" />
         </div>
         <span>
-            <h4>User name</h4>
-            <p className="small">1 sec ago</p>
+            <h4>{data.tweetedBy}</h4>
+            {/* <p className="small">{data.createdAt}</p> */}
         </span>
         </div>
-        <p>Aprenda com os erros dos outros. Você não consegue viver tempo suficiente para cometer todos por si mesmo.</p>
+        <p>{data.tweet}</p>
     </div>
   )
 }

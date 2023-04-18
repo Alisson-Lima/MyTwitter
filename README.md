@@ -64,26 +64,87 @@
 
 -------------------------------------------------------------
 
-**-- Utilizar autenticação no App --**
+**-- 6 Utilizar autenticação no App --**
 
-1.1 - Importar a dependência onAuthStateChanged: `import {onAuthStateChanged} from "firebase/auth"`
+6 .1 - Importar a dependência onAuthStateChanged: `import {onAuthStateChanged} from "firebase/auth"`
 
-1.2 - Importar o hook de autenticação criado anteriormente e utilizar a variável *auth*: `const {auth} = useAuthentication()`
+6 .2 - Importar o hook de autenticação criado anteriormente e utilizar a variável *auth*: `const {auth} = useAuthentication()`
 
-1.3 - Criar uma variável user atribuir o valor undefined: `const [user, setUser] = useState(undefined)`
+6 .3 - Criar uma variável user atribuir o valor undefined: `const [user, setUser] = useState(undefined)`
 
-1.4 - Fazer verificação lógica para loading do usuário: 
+6 .4 - Fazer verificação lógica para loading do usuário: 
 
 `const loadingUser = user === undefined`
 `if(loadingUser){return <p>Carregando...</p>}`
 
-1.5 - Mapear o usuário para saber se está autenticado ou não:
+6.5 - Mapear o usuário para saber se está autenticado ou não:
 
 `   useEffect(()=>{`
 `      onAuthStateChanged(auth, (user) => setUser(user))`
 `   },[auth])`
 
-1.6 - Utilizar user no value do context do App.js: `<AuthProvider value{{user}}>...</AuthProvider>`
+6.6 - Utilizar user no value do context do App.js: `<AuthProvider value{{user}}>...</AuthProvider>`
 
 -------------------------------------------------------------
 
+**-- 7 Inserção de dados --**
+
+7.1 - Importar db
+
+7.2 - Importar hooks do firebase: `import {Collection, addDoc, Timestamp} from "firebase/firestore"`
+
+7.3 - Criar hook com o parâmetro da collection: `export const useInsertDocument = (docCollection) => {}`
+
+7.4 - Criar uma função insertDocument dentro do hook: 
+
+`const insertDocument = async (document) = {`
+
+`}`
+
+7.5 - Criar documento em uma variável com os dados recebidos
+
+`const insertDocument = async (document) = {`
+    `const newDocument = {...document, timestamp.now() }`
+`}`
+
+7.6 - Inserir documento à collection: 
+
+`const insertDocument = async (document) = {`
+    `const newDocument = {...document, timestamp.now() }`
+    `await addDoc(collection(db, docCollection), newDocument)`
+`}`
+
+7.7 - Criar banco de dados na firebase
+
+7.7 - Retornar insertDocument no final do hook
+
+-------------------------------------------------------------
+
+**-- 8 Requisição de dados --**
+
+8.1 - Importar os hooks do firebase: `import {collection, query, orderBy, onSnapshot, where} from "firebase/firestore"`
+
+8.2 - Importar o db
+
+8.3 - Criar função principal do hook com o parâmetro da collection: 
+`export const useGetInfo = (docCollection) => {}`
+
+8.4 - Criar useEffect com docCollection como variável de dependência
+
+8.5 - Criar uma referência da collection: `const collectionRef = await collection(db, docCollection)`
+
+8.6 - Usar o query inserindo como parâmetro collectionRef e orderBy (opcional) dentro de uma variável: 
+`export const useGetInfo = (docCollection) => {`
+    `const collectionRef = await collection(db, docCollection)`
+    `let q = await query(collectionRef, orderBy("createAt", "desc"))`
+`}`
+
+8.7 - Criar snapshot com a variável criada com query e adicionar a um state de dados: 
+`await onSnapshot(q, (querySnapshot) => {`
+    `setData(`
+    `querySnapshot.docs.map(doc =>({`
+        `id: doc.id`
+        `...doc.data()`
+    `}))`
+    `)`
+`})`

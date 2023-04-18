@@ -2,7 +2,13 @@ import React from 'react'
 import styles from "./style.module.css"
 import Tweet from '../../components/Tweet'
 import { useState } from 'react'
+import {useAuthValue} from "../../context/AuthContext"
 const MyPerfil = () => {
+
+  const {user} = useAuthValue()
+  if(user){
+    console.log(user)
+  }
 
   const [passInput, setPassInput] = useState("password")
   return (
@@ -10,29 +16,18 @@ const MyPerfil = () => {
         <div className="main_container_inbox">
             <div className={styles.perfil_card}>
               <div className={styles.avatar}>
-                <img src="./img/avatar1.png" alt="Seu avatar" />
+                <img src={user.photoURL} alt="Seu avatar" />
               </div>
               <div className={styles.info_user}>
                 <span>Nome de usuário</span>
-                <h3>User name</h3>
-
-                <span>Senha de acesso</span>
-
-                <div className={styles.input_info}>
-                  <input type={passInput}  value={12345678}/>
-                  <button onClick={() => setPassInput( passInput === "password" ? "text" : "password" )}>
-                    <svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M6 0C7.24098 0 8.41756 0.430545 9.44195 1.22764C10.4663 2.01891 11.3385 3.17673 11.9649 4.62545C12.0117 4.736 12.0117 4.864 11.9649 4.96873C10.7122 7.86618 8.48195 9.6 6 9.6H5.99415C3.51805 9.6 1.2878 7.86618 0.035122 4.96873C-0.0117073 4.864 -0.0117073 4.736 0.035122 4.62545C1.2878 1.728 3.51805 0 5.99415 0H6ZM6 2.47273C4.70634 2.47273 3.65854 3.51418 3.65854 4.8C3.65854 6.08 4.70634 7.12145 6 7.12145C7.28781 7.12145 8.33561 6.08 8.33561 4.8C8.33561 3.51418 7.28781 2.47273 6 2.47273ZM6.0007 3.34417C6.80265 3.34417 7.45826 3.99581 7.45826 4.79872C7.45826 5.59581 6.80265 6.24745 6.0007 6.24745C5.1929 6.24745 4.53729 5.59581 4.53729 4.79872C4.53729 4.69981 4.549 4.60672 4.56656 4.51363H4.59582C5.24558 4.51363 5.77241 4.00163 5.79582 3.36163C5.86021 3.34999 5.93046 3.34417 6.0007 3.34417Z" fill="#535059"/>
-                    </svg>
-                  </button>
-                </div>
+                <h3>{user.displayName}</h3>
 
                 <span>Email</span>
                 <p>
                   <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.2791 0C14.4711 0 15.6178 0.471111 16.4613 1.31644C17.3058 2.16 17.7778 3.29778 17.7778 4.48889V11.5111C17.7778 13.9911 15.76 16 13.2791 16H4.49778C2.01689 16 0 13.9911 0 11.5111V4.48889C0 2.00889 2.008 0 4.49778 0H13.2791ZM14.2844 4.62222C14.0978 4.61244 13.92 4.67556 13.7858 4.8L9.77778 8C9.26222 8.42756 8.52356 8.42756 8 8L4 4.8C3.72356 4.59556 3.34133 4.62222 3.11111 4.86222C2.87111 5.10222 2.84444 5.48444 3.048 5.75111L3.16444 5.86667L7.20889 9.02222C7.70667 9.41333 8.31022 9.62667 8.94222 9.62667C9.57245 9.62667 10.1867 9.41333 10.6836 9.02222L14.6933 5.81333L14.7644 5.74222C14.9769 5.48444 14.9769 5.11111 14.7547 4.85333C14.6311 4.72089 14.4613 4.64 14.2844 4.62222Z" fill="#26232E"/>
                   </svg>
-                  user@gmail.com
+                  {user.email}
                 </p>
                 <span>Edit</span>
                 <button className={styles.btn_edit}>
@@ -46,8 +41,6 @@ const MyPerfil = () => {
             </div>
             <h3>Meus Tweets</h3>
             <div className={styles.tweet_container}>
-              <Tweet />
-              <Tweet />
             </div>
         </div>
     </main>

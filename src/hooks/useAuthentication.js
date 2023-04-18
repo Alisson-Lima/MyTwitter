@@ -21,11 +21,12 @@ export const useAuthentication = () => {
         checkIfIsCancelled()
         try{
             const {user} = await createUserWithEmailAndPassword(auth, data.email, data.pass)
-            await updateProfile(auth, {
+            await updateProfile(user, {
                 displayName: data.name,
                 photoURL: data.avatar
             })
             setLoading(false)
+            console.log(user)
             return user
         }catch (error){
 

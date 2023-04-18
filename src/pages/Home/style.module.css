@@ -1,3 +1,14 @@
+@keyframes inputError {
+  0% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
 .type_tweet {
   display: flex;
   align-items: center;
@@ -65,6 +76,11 @@
 }
 .type_tweet .inputs button {
   grid-area: c;
+}
+.type_tweet .inputError {
+  border-bottom: 2px solid #FF3535;
+  animation: inputError 0.17s ease-in-out;
+  animation-iteration-count: 3;
 }
 
 .tweets {

@@ -93,12 +93,16 @@ a {
 }
 
 body {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
   background: #0A0810;
   color: #D2D1D7;
 }
 
 #App {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -111,7 +115,7 @@ input {
   display: none;
 }
 
-span.loadCircle {
+.loadCircle {
   position: relative;
   display: block;
   width: 24px;
@@ -120,6 +124,10 @@ span.loadCircle {
   border: 5px solid #969499;
   border-top-color: #5B29E5;
   animation: loading 1s linear infinite;
+}
+
+.btn-loading {
+  background: #393640;
 }
 
 button {

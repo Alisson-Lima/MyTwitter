@@ -46,16 +46,17 @@ const LoginRegister = () => {
     const handleSubmitRegister = async (e) =>{
         e.preventDefault()
 
-        setRegisterAvatar("./img/avatar1.png")
-
+        const avatarSRC = ("./img/avatar1.png")
+        
         const user = {
             name: userName,
             email: registerEmail,
             pass: registerPass,
-            avatar: registerAvatar,
+            avatar: avatarSRC,
         }
 
         const res = await createUser(user)
+
 
         setRegisterEmail("")
         setRegisterPass("")
