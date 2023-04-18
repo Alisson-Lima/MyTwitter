@@ -139,7 +139,13 @@
     `let q = await query(collectionRef, orderBy("createAt", "desc"))`
 `}`
 
-8.7 - Criar snapshot com a variável criada com query e adicionar a um state de dados: 
+8.7 - Usar o where quando for fazer uma requisição *onde o dado é igual a alguma coisa*:
+`export const useGetInfo = (docCollection) => {`
+    `const collectionRef = await collection(db, docCollection)`
+    `let q = await query(collectionRef, where("uid", "==", IdUser) ,orderBy("createAt", "desc"))`
+`}`
+
+8.8 - Criar snapshot com a variável criada com query e adicionar a um state de dados: 
 `await onSnapshot(q, (querySnapshot) => {`
     `setData(`
     `querySnapshot.docs.map(doc =>({`

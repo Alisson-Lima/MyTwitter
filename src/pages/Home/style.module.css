@@ -15,7 +15,13 @@
   margin-bottom: 72px;
   gap: 40px;
 }
-.type_tweet img {
+.type_tweet a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.type_tweet a img {
   max-width: 80px;
 }
 .type_tweet input {

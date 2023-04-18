@@ -5,6 +5,7 @@ import { useInsertTweet } from '../../hooks/useInsertTweet'
 import { useState } from 'react'
 import { useAuthValue } from '../../context/AuthContext'
 import { useGetTweets } from '../../hooks/useGetTweets'
+import {Link} from "react-router-dom"
 import "../../css/index.css"
 
 const Home = () => {
@@ -50,9 +51,9 @@ const Home = () => {
 
           <div className={styles.type_tweet}>
 
-            <div className="my_avatar">
+            <Link to="/perfil" className="my_avatar">
               <img src="./img/avatar1.png" alt="Seu avatar" />
-            </div>
+            </Link>
 
             <div className={styles.inputs}>
               <input type="text" name="tweet" className={inputError === true ? (styles.inputError) : ""} placeholder='Type something' onChange={(e) => setTweet(e.target.value) } value={tweet} />

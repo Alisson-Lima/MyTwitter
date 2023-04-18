@@ -1,8 +1,9 @@
-import { collection, query, orderBy, onSnapshot, QuerySnapshot } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
+import { where } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../firebase/config";
 
-export const useGetTweets = (docCollection) =>{
+export const useGetTweets = (docCollection, uid = null) =>{
 
     const [tweets, setTweets] = useState(null)
     const [loading, setLoading] = useState(null)
@@ -18,7 +19,11 @@ export const useGetTweets = (docCollection) =>{
             try {    
                 let q;
 
-                q = await query(collectionRef, orderBy("createdAt", "desc"))
+                if(uid){
+                    q = await query(collectionRef, where("uid", "==", uid), orderBy("createdAt", "desc"))
+                }else{
+                    q = await query(collectionRef, orderBy("createdAt", "desc"))
+                }
 
                 await onSnapshot(q, (querySnapshot) =>{
                     setTweets(
@@ -28,6 +33,7 @@ export const useGetTweets = (docCollection) =>{
                         }))
                     )
                 })
+
 
                 setLoading(false)
             } catch (error) {

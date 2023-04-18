@@ -1,16 +1,13 @@
 import React from 'react'
 import styles from "./style.module.css"
 import Tweet from '../../components/Tweet'
-import { useState } from 'react'
 import {useAuthValue} from "../../context/AuthContext"
+import { useGetTweets } from '../../hooks/useGetTweets'
 const MyPerfil = () => {
 
   const {user} = useAuthValue()
-  if(user){
-    console.log(user)
-  }
+  const {tweets} = useGetTweets("tweets", user.uid)
 
-  const [passInput, setPassInput] = useState("password")
   return (
     <main className="main_container">
         <div className="main_container_inbox">
@@ -41,6 +38,9 @@ const MyPerfil = () => {
             </div>
             <h3>Meus Tweets</h3>
             <div className={styles.tweet_container}>
+              {tweets && tweets.map(tweet =>(
+                <Tweet key={tweet.id} data={tweet}/>
+              ))}
             </div>
         </div>
     </main>

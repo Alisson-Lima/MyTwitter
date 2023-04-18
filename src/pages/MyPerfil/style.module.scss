@@ -13,6 +13,8 @@
 
     .avatar img{
         max-width: 232px;
+        width: 100%;
+        min-width: 150px;
     }
 
     .info_user{
@@ -35,17 +37,6 @@
             max-width: 170px;
             height: 32px;
             margin-bottom: 20px;
-            input{
-                display: block;
-                width: 100%;
-                font-size: 20px;
-                height: 100%;
-                background: $gray3;
-                color: $gray6;
-                border-radius: 8px;
-                border: none;
-                padding: 10px 16px;
-            }
             button{
                 display: block;
                 position: absolute;
@@ -126,4 +117,22 @@
 h3{
     margin: 56px 0 24px;
     color: $gray6;
+}
+
+@media screen and (max-width: 630px) {
+    .perfil_card{
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+        .avatar{
+            margin-bottom: 32px;
+        }
+        .info_user{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
 }
