@@ -26,7 +26,6 @@ export const useAuthentication = () => {
                 photoURL: data.avatar
             })
             setLoading(false)
-            console.log(user)
             return user
         }catch (error){
 

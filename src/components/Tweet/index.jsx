@@ -9,7 +9,7 @@ const Tweet = ({data}) => {
         </div>
         <span>
             <h4>{data.tweetedBy}</h4>
-            <p className="small">{data.createdAt}</p>
+            <p className="small">{data.postCreatedData}</p>
         </span>
         </div>
         <p>{data.tweet}</p>
