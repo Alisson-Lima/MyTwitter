@@ -7,11 +7,16 @@ const Nav = () => {
     const {logout} = useAuthentication()
     const [openMenu, setOpenMenu] = useState(false)
 
-    const handleCloseMenu = (e) =>{
+    const handleCloseMenu = () =>{
         setOpenMenu(false)
     }
-    const handleOpenMenu = (e) =>{
+    const handleOpenMenu = () =>{
         setOpenMenu(true)
+    }
+    const handleNav = (e) =>{
+        if(e.clientX > 300){
+            setOpenMenu(false)
+        }
     }
   return (
     <>
@@ -20,7 +25,7 @@ const Nav = () => {
             <span></span>
             <span></span>
         </button>
-        <nav className={ styles.nav_container + " " + (openMenu ? styles.open : styles.close) }>
+        <nav className={ styles.nav_container + " " + (openMenu ? styles.open : styles.close) } onClick={handleNav}>
         <button onClick={handleCloseMenu} className={styles.btn_menu + " btn_menu " + styles.btn_close_menu}>
             <span></span>
             <span></span>
@@ -28,7 +33,7 @@ const Nav = () => {
             <div className={styles.thumbnail}></div>
             <ul>
                 <li>
-                    <NavLink to="/perfil">
+                    <NavLink to="/perfil" onClick={() => setOpenMenu(false)}>
                         <svg width="19" height="24" viewBox="0 0 19 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.5 15.8087C14.6521 15.8087 19 16.6547 19 19.9188C19 23.184 14.6236 24 9.5 24C4.34907 24 0 23.154 0 19.89C0 16.6247 4.37639 15.8087 9.5 15.8087ZM9.5 0C12.9902 0 15.7866 2.82483 15.7866 6.34926C15.7866 9.8737 12.9902 12.6997 9.5 12.6997C6.011 12.6997 3.21339 9.8737 3.21339 6.34926C3.21339 2.82483 6.011 0 9.5 0Z" fill="#26232E"/>
                         </svg>
@@ -36,7 +41,7 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/home">
+                    <NavLink to="/home" onClick={() => setOpenMenu(false)}>
                         <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.68238 22.528V18.8587C7.68238 17.9221 8.42041 17.1628 9.33082 17.1628H12.6588C13.096 17.1628 13.5153 17.3414 13.8244 17.6595C14.1336 17.9776 14.3073 18.4089 14.3073 18.8587V22.528C14.3045 22.9174 14.4529 23.2918 14.7196 23.5682C14.9863 23.8446 15.3491 24 15.7276 24H17.9981C19.0585 24.0028 20.0764 23.5714 20.8272 22.801C21.578 22.0305 22 20.9844 22 19.8934V9.44023C22 8.55895 21.6203 7.72301 20.9632 7.1576L13.2394 0.811042C11.8958 -0.301726 9.97076 -0.265797 8.66729 0.896374L1.1197 7.1576C0.431594 7.70634 0.0203237 8.54476 0 9.44023V19.8827C0 22.1566 1.7917 24 4.00188 24H6.22055C7.00668 24 7.64558 23.3474 7.65127 22.5387L7.68238 22.528Z" fill="#26232E"/>
                         </svg>
@@ -44,7 +49,7 @@ const Nav = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/explorer">
+                    <NavLink to="/explorer" onClick={() => setOpenMenu(false)}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.10411 13.7638C8.79613 13.7638 10.1522 15.1331 10.1522 16.8371V20.928C10.1522 22.62 8.79613 24 7.10411 24H3.04805C1.36802 24 0 22.62 0 20.928V16.8371C0 15.1331 1.36802 13.7638 3.04805 13.7638H7.10411ZM20.9524 13.7638C22.6325 13.7638 24.0005 15.1331 24.0005 16.8371V20.928C24.0005 22.62 22.6325 24 20.9524 24H16.8964C15.2043 24 13.8483 22.62 13.8483 20.928V16.8371C13.8483 15.1331 15.2043 13.7638 16.8964 13.7638H20.9524ZM7.10411 0C8.79613 0 10.1522 1.38002 10.1522 3.07325V7.16411C10.1522 8.86813 8.79613 10.2362 7.10411 10.2362H3.04805C1.36802 10.2362 0 8.86813 0 7.16411V3.07325C0 1.38002 1.36802 0 3.04805 0H7.10411ZM20.9524 0C22.6325 0 24.0005 1.38002 24.0005 3.07325V7.16411C24.0005 8.86813 22.6325 10.2362 20.9524 10.2362H16.8964C15.2043 10.2362 13.8483 8.86813 13.8483 7.16411V3.07325C13.8483 1.38002 15.2043 0 16.8964 0H20.9524Z" fill="#26232E"/>
                         </svg>
