@@ -109,6 +109,10 @@ button{
     .main_container{
         width: 100vw;
         margin-left: 0;
+
+        .main_container_inbox{
+            padding: 80px 14px;
+        }
     }
     
     .btn_menu{

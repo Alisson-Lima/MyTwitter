@@ -19,7 +19,18 @@ export const useInsertTweet = (docCollection) =>{
         setLoading(true)
 
         try {
-            const newTweet = {...tweetData, createdAt: Timestamp.now()}
+
+            let date = new Date()
+
+            const postDate = date.toLocaleDateString("pt-br", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric"
+            })
+
+            const newTweet = {...tweetData, createdAt: postDate}
             await addDoc(collection(db, docCollection), newTweet)
             setLoading(false)
         } catch (error) {

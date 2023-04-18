@@ -19,6 +19,7 @@
   color: #6E6D73;
 }
 .tweet p {
+  word-wrap: break-word;
   margin-left: 82px;
 }
 .tweet img {
@@ -26,4 +27,17 @@
 }
 .tweet:last-child {
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .tweet {
+    padding: 32px 16px;
+  }
+  .tweet .header span {
+    margin-left: 16px;
+  }
+  .tweet p {
+    margin-left: 66px;
+    font-size: 14px;
+  }
 }

@@ -1,6 +1,6 @@
 import styles from "./style.module.css"
-
 const Tweet = ({data}) => {
+
   return (
     <div className={styles.tweet}>
         <div className={styles.header}>
@@ -9,7 +9,7 @@ const Tweet = ({data}) => {
         </div>
         <span>
             <h4>{data.tweetedBy}</h4>
-            {/* <p className="small">{data.createdAt}</p> */}
+            <p className="small">{data.createdAt}</p>
         </span>
         </div>
         <p>{data.tweet}</p>
