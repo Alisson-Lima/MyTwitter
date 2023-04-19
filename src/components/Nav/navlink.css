@@ -1,0 +1,13 @@
+a.active{
+    background: #1C1924;
+}
+a.active span{
+    transform: translateX(12px);
+    transition-delay: .1s;
+}
+a.active svg{
+    transform: translateX(8px);
+}
+a.active svg path{
+    fill: #5B29E5;
+}

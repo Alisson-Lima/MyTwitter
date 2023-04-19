@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {NavLink} from "react-router-dom"
 import { useAuthentication } from '../../hooks/useAuthentication'
 import styles from "./style.module.css"
+import "./navlink.css"
 const Nav = () => {
     const [dialogBox, setDialogBox] = useState("")
     const {logout} = useAuthentication()

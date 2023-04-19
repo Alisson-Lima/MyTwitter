@@ -94,6 +94,19 @@
 .nav_container ul li a:hover svg path {
   fill: #5B29E5;
 }
+.nav_container ul li a.active {
+  background: #1C1924;
+}
+.nav_container ul li a.active span {
+  transform: translateX(12px);
+  transition-delay: 0.1s;
+}
+.nav_container ul li a.active svg {
+  transform: translateX(8px);
+}
+.nav_container ul li a.active svg path {
+  fill: #5B29E5;
+}
 .nav_container ul li button {
   display: flex;
   padding: 16px 32px;
