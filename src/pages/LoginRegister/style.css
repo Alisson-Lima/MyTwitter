@@ -169,20 +169,27 @@
 }
 .loginRegister .select_avatar {
   display: flex;
+  justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
 }
 .loginRegister .select_avatar img {
   max-width: 50px;
 }
 .loginRegister .select_avatar input {
-  width: 12px;
+  max-width: 12px;
   margin-right: 8px;
 }
 .loginRegister .select_avatar label {
-  width: auto;
   display: flex;
   justify-content: center;
+  max-width: 72px;
   align-items: center;
   cursor: pointer;
 }

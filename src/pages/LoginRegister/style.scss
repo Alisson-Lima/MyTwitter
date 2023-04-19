@@ -177,22 +177,33 @@
 
     .select_avatar{
         display: flex;
+        justify-content: center;
         gap: 16px;
         flex-wrap: wrap;
+
         img{
             max-width: 50px;
+            
         }
         input{
-            width: 12px;
+            max-width: 12px;
             margin-right: 8px;
         }
         label{
-            width: auto;
             display: flex;
             justify-content: center;
+            max-width: 72px;
             align-items: center;
             cursor: pointer;
         }
+
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        
     }
 }
 
