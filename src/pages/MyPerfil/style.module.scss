@@ -119,6 +119,41 @@ h3{
     color: $gray6;
 }
 
+.no_tweet{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid $gray3;
+    background: $gray2;
+    border-radius: 8px;
+    padding: 32px;
+
+    h4{
+        margin-bottom: 16px;
+    }
+
+    p{
+        margin-bottom: 32px;
+    }
+
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 16px 32px;
+        background: $purple;
+        border-radius: 8px;
+        color: $white;
+        transition: .2s;
+
+        &:hover{
+            background: $purple-light;
+        }
+    }
+}
+
 @media screen and (max-width: 630px) {
     .perfil_card{
         flex-direction: column;

@@ -3,6 +3,7 @@ import styles from "./style.module.css"
 import Tweet from '../../components/Tweet'
 import {useAuthValue} from "../../context/AuthContext"
 import { useGetTweets } from '../../hooks/useGetTweets'
+import { Link } from 'react-router-dom'
 const MyPerfil = () => {
 
   const {user} = useAuthValue()
@@ -41,6 +42,15 @@ const MyPerfil = () => {
               {tweets && tweets.map(tweet =>(
                 <Tweet key={tweet.id} data={tweet}/>
               ))}
+              {
+                tweets && tweets.length == 0 && (
+                  <div className={styles.no_tweet}>
+                    <h3>Faça seu primeiro tweet!</h3>
+                    <p>Você ainda não fez nenhum tweet, vá para a pagina <b>home</b> e faça seu primeiro tweet!</p>
+                    <Link to="/home">Ir para home</Link>
+                  </div>
+                )
+              }
             </div>
         </div>
     </main>

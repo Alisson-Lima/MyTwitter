@@ -52,7 +52,7 @@ const Home = () => {
           <div className={styles.type_tweet}>
 
             <Link to="/perfil" className="my_avatar">
-              <img src="./img/avatar1.png" alt="Seu avatar" />
+              <img src={user.photoURL} alt="Seu avatar" />
             </Link>
 
             <div className={styles.inputs}>

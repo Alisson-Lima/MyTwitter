@@ -167,6 +167,25 @@
   border-radius: 8px;
   animation: message 5s ease-out forwards;
 }
+.loginRegister .register_container .select_avatar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.loginRegister .register_container .select_avatar img {
+  max-width: 50px;
+}
+.loginRegister .register_container .select_avatar input {
+  width: 12px;
+  margin-right: 8px;
+}
+.loginRegister .register_container .select_avatar label {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 411px) {
   .loginRegister {

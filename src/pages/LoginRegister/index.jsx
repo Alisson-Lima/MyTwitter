@@ -46,17 +46,14 @@ const LoginRegister = () => {
     const handleSubmitRegister = async (e) =>{
         e.preventDefault()
 
-        const avatarSRC = ("./img/avatar1.png")
-        
         const user = {
             name: userName,
             email: registerEmail,
             pass: registerPass,
-            avatar: avatarSRC,
+            avatar: registerAvatar,
         }
 
         const res = await createUser(user)
-
 
         setRegisterEmail("")
         setRegisterPass("")
@@ -130,18 +127,42 @@ const LoginRegister = () => {
                                 <input type="checkbox" name="check" onClick={handleShowPass}/>
                                 <span>Mostrar senha</span>
                             </label>
-                            <div className="avatar display-none">
+                            <div className="select_avatar">
                                 <label>
-                                    <input type="radio" name="avatar1"/>
-                                    <img src="" alt="Avatar 1" />
+                                    <input type="radio" name="avatar" value="./img/avatar1.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar1.png" alt="Avatar 1" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar2"/>
-                                    <img src="" alt="Avatar 2" />
+                                    <input type="radio" name="avatar" value="./img/avatar2.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar2.png" alt="Avatar 2" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar3"/>
-                                    <img src="" alt="Avatar 3" />
+                                    <input type="radio" name="avatar" value="./img/avatar3.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar3.png" alt="Avatar 3" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="avatar" value="./img/avatar4.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar4.png" alt="Avatar 4" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="avatar" value="./img/avatar5.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar5.png" alt="Avatar 5" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="avatar" value="./img/avatar6.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar6.png" alt="Avatar 6" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="avatar" value="./img/avatar7.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar7.png" alt="Avatar 7" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="avatar" value="./img/avatar8.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar8.png" alt="Avatar 8" />
+                                </label>
+                                <label>
+                                    <input type="radio" name="avatar" value="./img/avatar9.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <img src="./img/avatar9.png" alt="Avatar 9" />
                                 </label>
                             </div>
                             { loading && <button className="btn-loading"><span className="loadCircle"></span></button>}

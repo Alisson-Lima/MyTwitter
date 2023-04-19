@@ -97,6 +97,14 @@ button{
     display: none;
 }
 
+
+.show_hashes{
+    opacity: 1;
+}
+.hidden_hashes{
+    opacity: 0;
+}
+
 @media screen and (max-width: 1100px) {
     .main_container{
         width: 66vw;
