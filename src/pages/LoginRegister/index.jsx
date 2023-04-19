@@ -129,39 +129,39 @@ const LoginRegister = () => {
                             </label>
                             <div className="select_avatar">
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar1.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar1.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar1.png" alt="Avatar 1" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar2.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar2.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar2.png" alt="Avatar 2" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar3.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar3.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar3.png" alt="Avatar 3" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar4.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar4.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar4.png" alt="Avatar 4" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar5.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar5.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar5.png" alt="Avatar 5" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar6.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar6.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar6.png" alt="Avatar 6" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar7.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar7.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar7.png" alt="Avatar 7" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar8.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar8.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar8.png" alt="Avatar 8" />
                                 </label>
                                 <label>
-                                    <input type="radio" name="avatar" value="./img/avatar9.png" onClick={(e) => setRegisterAvatar(e.target.value)}/>
+                                    <input type="radio" name="avatar" value="./img/avatar9.png" onClick={(e) => setRegisterAvatar(e.target.value)} required/>
                                     <img src="./img/avatar9.png" alt="Avatar 9" />
                                 </label>
                             </div>
