@@ -16,8 +16,8 @@ const Home = () => {
   const {user} = useAuthValue()
   const [inputError, setInputError] = useState(false)
   const {tweets} = useGetTweets("tweets")
+  const [tagsError, setTagsError] = useState(false)
 
-  
   const handleAddTweet = async() => {
 
     if(tweet === ""){
@@ -27,20 +27,53 @@ const Home = () => {
 
     setInputError(false)
 
-    const tagsArr = tags.split(" ") 
+    const formatHashes = (tagBruta) =>{
+      
+      const tagsArr = tagBruta.split(" ") 
 
-    const newTweet = {
-      tweet,
-      tags: tagsArr,
-      tweetedBy: user.displayName,
-      uid: user.uid,
-      userAvatar: user.photoURL,
+      // Eliminando espaços em branco
+      let whiteArr = tagsArr.indexOf("")
+      for(let i = 0; tagsArr.includes("") ; i++){
+        whiteArr = tagsArr.indexOf("")
+        if(whiteArr > 0){
+          tagsArr.splice(whiteArr, 1)
+        }else{
+          return
+        }
+      }
+
+      const tagsArrBruto = tagBruta.split('')
+      const tagsHashVerify = tagsArrBruto.includes("#")
+      const tagsVirgVerify = tagsArrBruto.includes(",")
+
+      if(!tagsHashVerify && !tagsVirgVerify){
+        return tagsArr
+      }
+
+      setTagsError(true)
+      return 
+
     }
 
-    await insertTweet(newTweet)
+    const tagsOficial = formatHashes(tags)
+    if(tagsOficial === undefined){
+      return
+    }else{
+      
+      const newTweet = {
+        tweet,
+        tags: tagsOficial,
+        tweetedBy: user.displayName,
+        uid: user.uid,
+        userAvatar: user.photoURL,
+      }
+  
+      await insertTweet(newTweet)
+  
+      setTags("")
+      setTweet("")
+    }
 
-    setTags("")
-    setTweet("")
 
   }
 
@@ -52,12 +85,15 @@ const Home = () => {
           <div className={styles.type_tweet}>
 
             <Link to="/perfil" className="my_avatar">
-              <img src={user.photoURL} alt="Seu avatar" />
+              {user && <img src={user.photoURL} alt="Seu avatar" />}
             </Link>
 
             <div className={styles.inputs}>
               <input type="text" name="tweet" className={inputError === true ? (styles.inputError) : ""} placeholder='Type something' onChange={(e) => setTweet(e.target.value) } value={tweet} />
-              <input type="text" name="tags" placeholder='Tags' onChange={(e) => setTags(e.target.value)} value={tags}/>
+
+              <input type="text" name="tags" className={tagsError === true ? (styles.inputError) : ""} placeholder='Tags' onChange={(e) => {setTags(e.target.value); setTagsError(false)}} value={tags}/>
+              {tagsError && <span>Não é necessário colocar <b>#</b> ou <b>,</b> nas tags.</span>}
+
               {!loading && (
                 <button onClick={handleAddTweet}>
                   <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
