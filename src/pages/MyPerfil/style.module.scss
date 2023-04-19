@@ -16,15 +16,16 @@
     .avatar{
         display: block;
         position: relative;
+        border-radius: 100%;
+
         min-width: 150px;
         min-height: 150px;
-        border-radius: 100%;
         width: 100%;
         height: 100%;
         max-width: 232px;
         max-height: 232px;
+
         overflow: hidden;
-        
         text-align: center;
 
         img{
@@ -302,6 +303,14 @@ h3{
         width: 100%;
         .avatar{
             margin-bottom: 32px;
+
+            min-width: none;
+            min-height: none;
+            max-width: none;
+            max-height: none;
+            width: 120px;
+            height: 120px;
+            
         }
         .info_user{
             text-align: center;
