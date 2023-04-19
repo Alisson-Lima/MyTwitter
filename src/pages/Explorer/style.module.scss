@@ -1,0 +1,65 @@
+@import "../../css/colors";
+.container_search{
+
+    .search_inputs{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        input{
+            display: block;
+            width: 70%;
+            height: 64px;
+            border-radius: 8px;
+            padding: 32px 22px;
+            border: none;
+            background: $gray3;
+            color: $gray7;
+            font-size: 16px;
+            transition: .4s;
+            &::placeholder{
+                color: $gray7;
+            }
+            &:focus{
+                background: $gray4;
+            }
+        }
+        
+        button{
+            display: inline-block;
+            width: 28%;
+            height: 64px;
+            border-radius: 8px;
+            min-width: 150px;
+            padding: 16px;
+            border: none;
+            background: $purple-light;
+            color: $white;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    }
+
+    .tweets_container{
+        margin-top: 56px;
+
+        .p_result{
+            color: $gray7;
+        }
+    }
+
+}
+
+@media screen and (max-width: 590px) {
+    .container_search .search_inputs{ 
+        input{
+            width: 100%;
+            margin-bottom: 16px;
+        }
+        button{
+            width: 100%;
+        }
+    }
+}

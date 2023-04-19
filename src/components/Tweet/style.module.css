@@ -24,8 +24,24 @@
   word-wrap: break-word;
   margin-left: 82px;
 }
-.tweet img {
+.tweet .avatar {
+  display: block;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
+  border-radius: 100%;
   max-width: 50px;
+  max-height: 50px;
+  overflow: hidden;
+  text-align: center;
+}
+.tweet .avatar img {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
 }
 .tweet:last-child {
   margin-bottom: 0;

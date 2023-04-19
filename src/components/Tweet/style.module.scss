@@ -27,8 +27,28 @@
         margin-left: 82px;
     }
 
-    img{
+    .avatar{
+        display: block;
+        position: relative;
+        min-width: 50px;
+        min-height: 50px;
+        border-radius: 100%;
         max-width: 50px;
+        max-height: 50px;
+
+        // border: 1px solid red;
+        overflow: hidden;
+        
+        text-align: center;
+
+        img{
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+        }
     }
 
     &:last-child{

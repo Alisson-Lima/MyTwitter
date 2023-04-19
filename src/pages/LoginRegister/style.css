@@ -167,19 +167,19 @@
   border-radius: 8px;
   animation: message 5s ease-out forwards;
 }
-.loginRegister .register_container .select_avatar {
+.loginRegister .select_avatar {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
 }
-.loginRegister .register_container .select_avatar img {
+.loginRegister .select_avatar img {
   max-width: 50px;
 }
-.loginRegister .register_container .select_avatar input {
+.loginRegister .select_avatar input {
   width: 12px;
   margin-right: 8px;
 }
-.loginRegister .register_container .select_avatar label {
+.loginRegister .select_avatar label {
   width: auto;
   display: flex;
   justify-content: center;

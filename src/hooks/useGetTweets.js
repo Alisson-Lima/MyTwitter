@@ -10,10 +10,16 @@ export const useGetTweets = (docCollection, uid = null) =>{
     const [error, setError] = useState(null)
     const [cancelled, setCancelled] = useState(false)
 
+    function checkIfIsCancelled(){
+        if(cancelled){
+            return
+        }
+    }
+
     useEffect(()=>{
 
         const loadData = async() =>{
-            if(cancelled) return 
+            checkIfIsCancelled()
             setLoading(true)
             const collectionRef = await collection(db, docCollection)
             try {    
@@ -47,6 +53,31 @@ export const useGetTweets = (docCollection, uid = null) =>{
 
     }, [docCollection, cancelled])
 
+    useEffect(()=>{
+        return () => setCancelled(true)
+    },[])
 
-    return {tweets, loading, error}
+    const search = async(tag) =>{
+        checkIfIsCancelled()
+        setError(null)
+        setLoading(true)
+        try {
+            const collectionRef = await collection(db, docCollection)
+            let q = await query(collectionRef, where("tags", "array-contains", tag), orderBy("createdAt", "desc"))
+            await onSnapshot(q, (querySnapshot) =>{
+                setTweets(
+                    querySnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    }))
+                )
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
+        
+    }
+
+
+    return {tweets, loading, error, search}
 }

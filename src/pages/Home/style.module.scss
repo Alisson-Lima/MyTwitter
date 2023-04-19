@@ -27,6 +27,33 @@
         }
     }
 
+    .avatar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        position: relative;
+        min-width: 80px;
+        min-height: 80px;
+        border-radius: 100%;
+        max-width: 80px;
+        max-height: 80px;
+
+        // border: 1px solid red;
+        overflow: hidden;
+        
+        text-align: center;
+
+        img{
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
     input{
         display: block;
         width: 100%;

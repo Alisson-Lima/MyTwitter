@@ -1,9 +1,10 @@
 import styles from "./style.module.css"
 import { useState } from "react"
+import { useAuthValue } from "../../context/AuthContext"
 const Tweet = ({data}) => {
 
   const [showTags, setShowTags] = useState(false)
-
+  const {user} = useAuthValue()
   const handleShowTags = () =>{
     
     if(showTags){
@@ -17,8 +18,8 @@ const Tweet = ({data}) => {
   return (
     <div className={styles.tweet} onClickCapture={() => setShowTags(false)}>
         <div className={styles.header}>
-        <div className="avatar">
-            <img src={data.userAvatar} alt="" />
+        <div className={styles.avatar}>
+            <img src={data.userAvatar} alt={data.name} />
         </div>
         <span>
             <h4>{data.tweetedBy}</h4>
@@ -34,9 +35,9 @@ const Tweet = ({data}) => {
           </div>
           Hashtags
         </label>
-          <ul className={styles.hash_container + " " + (showTags ? "show_hashes": "hidden_hashes")}>
+          <ul className={styles.hash_container + " " + (showTags ? "show": "hidden")}>
             {data && data.tags != 0 && data.tags.map(tag =>(
-              <li key={tag}><b>#{tag.toLowerCase()}</b></li>
+              <li key={tag}><b>#{tag}</b></li>
             ))}
             {data && data.tags == 0 && (
               <li>Esse post não tem hashtag.</li>

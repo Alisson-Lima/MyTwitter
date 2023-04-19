@@ -1,0 +1,58 @@
+.container_search .search_inputs {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.container_search .search_inputs input {
+  display: block;
+  width: 70%;
+  height: 64px;
+  border-radius: 8px;
+  padding: 32px 22px;
+  border: none;
+  background: #1C1924;
+  color: #6E6D73;
+  font-size: 16px;
+  transition: 0.4s;
+}
+.container_search .search_inputs input::-moz-placeholder {
+  color: #6E6D73;
+}
+.container_search .search_inputs input::placeholder {
+  color: #6E6D73;
+}
+.container_search .search_inputs input:focus {
+  background: #26232E;
+}
+.container_search .search_inputs button {
+  display: inline-block;
+  width: 28%;
+  height: 64px;
+  border-radius: 8px;
+  min-width: 150px;
+  padding: 16px;
+  border: none;
+  background: #5B29E5;
+  color: #D2D1D7;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.container_search .tweets_container {
+  margin-top: 56px;
+}
+.container_search .tweets_container .p_result {
+  color: #6E6D73;
+}
+
+@media screen and (max-width: 590px) {
+  .container_search .search_inputs input {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .container_search .search_inputs button {
+    width: 100%;
+  }
+}

@@ -29,7 +29,7 @@ const Home = () => {
 
     const formatHashes = (tagBruta) =>{
       
-      const tagsArr = tagBruta.split(" ") 
+      const tagsArr = tagBruta.toLowerCase().split(" ") 
 
       // Eliminando espaços em branco
       let whiteArr = tagsArr.indexOf("")
@@ -84,7 +84,7 @@ const Home = () => {
 
           <div className={styles.type_tweet}>
 
-            <Link to="/perfil" className="my_avatar">
+            <Link to="/perfil" className={styles.avatar}>
               {user && <img src={user.photoURL} alt="Seu avatar" />}
             </Link>
 
