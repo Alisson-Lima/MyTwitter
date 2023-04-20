@@ -74,9 +74,9 @@
   border: none;
 }
 .tweet .hash_container {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
   left: 114px;
   margin-top: 20px;
   width: calc(auto - 16px);
@@ -88,6 +88,7 @@
           backdrop-filter: blur(5px);
   border: 2px solid #26232E;
   border-radius: 8px;
+  word-break: break-all;
   pointer-events: none;
   z-index: 2;
   transition: 0.2s;
