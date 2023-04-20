@@ -19,8 +19,7 @@ const Home = () => {
   const [tagsError, setTagsError] = useState(false)
 
   const handleAddTweet = async() => {
-
-    if(tweet === ""){
+    if(tweet === " "){
       setInputError(true)
       return
     }
@@ -45,6 +44,7 @@ const Home = () => {
       const tagsArrBruto = tagBruta.split('')
       const tagsHashVerify = tagsArrBruto.includes("#")
       const tagsVirgVerify = tagsArrBruto.includes(",")
+      const tagsDotVerify = tagsArrBruto.includes(".")
 
       if(!tagsHashVerify && !tagsVirgVerify){
         return tagsArr
@@ -89,7 +89,7 @@ const Home = () => {
             </Link>
 
             <div className={styles.inputs}>
-              <input type="text" name="tweet" className={inputError === true ? (styles.inputError) : ""} placeholder='Type something' onChange={(e) => setTweet(e.target.value) } value={tweet} />
+              <input type="text" name="tweet" className={inputError === true ? (styles.inputError) : ""} placeholder='Type something' onChange={(e) => setTweet(e.target.value) } value={tweet} required />
 
               <input type="text" name="tags" className={tagsError === true ? (styles.inputError) : ""} placeholder='Tags' onChange={(e) => {setTags(e.target.value); setTagsError(false)}} value={tags}/>
               {tagsError && <span>Não é necessário colocar <b>#</b> ou <b>,</b> nas tags.</span>}
