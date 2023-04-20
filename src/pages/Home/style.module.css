@@ -10,21 +10,27 @@
   }
 }
 .type_tweet {
+  width: 100%;
+  margin-bottom: 72px;
+}
+.type_tweet .insert_values {
+  margin: 0;
   display: flex;
   align-items: center;
-  margin-bottom: 72px;
-  gap: 40px;
+  max-width: 100%;
+  gap: 32px;
+  margin-bottom: 16px;
 }
-.type_tweet a {
+.type_tweet .insert_values a {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
 }
-.type_tweet a img {
+.type_tweet .insert_values a img {
   max-width: 80px;
 }
-.type_tweet .avatar {
+.type_tweet .insert_values .avatar {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +44,7 @@
   overflow: hidden;
   text-align: center;
 }
-.type_tweet .avatar img {
+.type_tweet .insert_values .avatar img {
   display: inline-block;
   position: absolute;
   left: 0;
@@ -46,7 +52,7 @@
   height: 100%;
   width: 100%;
 }
-.type_tweet input {
+.type_tweet .insert_values input {
   display: block;
   width: 100%;
   padding: 16px 0;
@@ -59,16 +65,16 @@
   font-family: "Montserrat";
   transition: 0.2s;
 }
-.type_tweet input::-moz-placeholder {
+.type_tweet .insert_values input::-moz-placeholder {
   color: #535059;
 }
-.type_tweet input::placeholder {
+.type_tweet .insert_values input::placeholder {
   color: #535059;
 }
-.type_tweet input:focus {
+.type_tweet .insert_values input:focus {
   border-bottom-color: #5B29E5;
 }
-.type_tweet button {
+.type_tweet .insert_values button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,35 +86,41 @@
   background: #5B29E5;
   transition: 0.4s;
 }
-.type_tweet button svg {
+.type_tweet .insert_values button svg {
   position: relative;
   left: -2px;
 }
-.type_tweet button:hover {
+.type_tweet .insert_values button:hover {
   filter: brightness(1.2);
 }
-.type_tweet .inputs {
+.type_tweet .insert_values .inputs {
   width: 100%;
   display: grid;
   gap: 24px;
   grid-template-areas: "a a a" "b b c";
 }
-.type_tweet .inputs input:nth-child(1) {
+.type_tweet .insert_values .inputs input:nth-child(1) {
   grid-area: a;
 }
-.type_tweet .inputs input:nth-child(2) {
+.type_tweet .insert_values .inputs input:nth-child(2) {
   display: block;
   width: 100%;
   max-width: 350px;
   grid-area: b;
 }
-.type_tweet .inputs button {
+.type_tweet .insert_values .inputs button {
   grid-area: c;
 }
-.type_tweet .inputError {
+.type_tweet .insert_values .inputError {
   border-bottom: 2px solid #FF3535;
   animation: inputError 0.17s ease-in-out;
   animation-iteration-count: 3;
+}
+.type_tweet .insert_erro {
+  display: block;
+  margin: 0;
+  width: 100%;
+  color: #FF3535;
 }
 
 .tweets {

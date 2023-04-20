@@ -10,123 +10,133 @@
         transform: translateX(-10px);
     }
 }
-
 .type_tweet{
-    display: flex;
-    align-items: center;
+    width: 100%;
     margin-bottom: 72px;
-    gap: 40px;
+    .insert_values{
+        margin: 0;
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        gap: 32px;    
+        margin-bottom: 16px;
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            img{
+                max-width: 80px;
+            }
+        }
     
-    a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        img{
-            max-width: 80px;
-        }
-    }
-
-    .avatar{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        position: relative;
-        min-width: 80px;
-        min-height: 80px;
-        border-radius: 100%;
-        max-width: 80px;
-        max-height: 80px;
-
-        // border: 1px solid red;
-        overflow: hidden;
-        
-        text-align: center;
-
-        img{
-            display: inline-block;
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-        }
-    }
-
-    input{
-        display: block;
-        width: 100%;
-        padding: 16px 0;
-        background: transparent;
-        color: $gray9;
-        border: transparent;
-        border-bottom: 2px solid $gray4;
-        outline: transparent;
-        font-size: 16px;
-        font-family: "Montserrat";
-        transition: .2s;
-
-        &::placeholder{
-            color: $gray6;
-        }
-
-        &:focus{
-            border-bottom-color: $purple-light;
-        }
-    }
-
-    button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        min-width: 50px;
-        height: 50px;
-        border-radius: 8px;
-        border: none;
-        background: $purple-light;
-        transition: .4s;
-
-        svg{
+        .avatar{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
             position: relative;
-            left: -2px;
+            min-width: 80px;
+            min-height: 80px;
+            border-radius: 100%;
+            max-width: 80px;
+            max-height: 80px;
+    
+            // border: 1px solid red;
+            overflow: hidden;
+            
+            text-align: center;
+    
+            img{
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+            }
         }
-
-        &:hover{
-            filter: brightness(1.2);
-        }
-    }
-
-    .inputs{
-        width: 100%;
-        display: grid;
-        gap: 24px;
-        grid-template-areas:
-            "a a a"
-            "b b c"
-        ;
-
-        input:nth-child(1){
-            grid-area: a;
-        }
-        input:nth-child(2){
+    
+        input{
             display: block;
             width: 100%;
-            max-width: 350px;
-            grid-area: b;
+            padding: 16px 0;
+            background: transparent;
+            color: $gray9;
+            border: transparent;
+            border-bottom: 2px solid $gray4;
+            outline: transparent;
+            font-size: 16px;
+            font-family: "Montserrat";
+            transition: .2s;
+    
+            &::placeholder{
+                color: $gray6;
+            }
+    
+            &:focus{
+                border-bottom-color: $purple-light;
+            }
         }
-
+    
         button{
-            grid-area: c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: none;
+            background: $purple-light;
+            transition: .4s;
+    
+            svg{
+                position: relative;
+                left: -2px;
+            }
+    
+            &:hover{
+                filter: brightness(1.2);
+            }
+        }
+    
+        .inputs{
+            width: 100%;
+            display: grid;
+            gap: 24px;
+            grid-template-areas:
+                "a a a"
+                "b b c"
+            ;
+    
+            input:nth-child(1){
+                grid-area: a;
+            }
+            input:nth-child(2){
+                display: block;
+                width: 100%;
+                max-width: 350px;
+                grid-area: b;
+            }
+    
+            button{
+                grid-area: c;
+            }
+        }
+        .inputError{
+            border-bottom: 2px solid $red;
+            animation: inputError .17s ease-in-out;
+            animation-iteration-count: 3;
         }
     }
-    .inputError{
-        border-bottom: 2px solid $red;
-        // animation: name duration timing-function delay iteration-count direction fill-mode;
-        animation: inputError .17s ease-in-out;
-        animation-iteration-count: 3;
+    .insert_erro{
+        display: block;
+        margin: 0;
+        width: 100%;
+        color: $red;
     }
+
 }
 
 
