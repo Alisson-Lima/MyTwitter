@@ -91,6 +91,15 @@ button{
         width: 100%;
         height: auto;
         padding: 80px 32px;
+
+        .load_tweets{
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
     }
 }
 

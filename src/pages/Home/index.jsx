@@ -10,58 +10,73 @@ import "../../css/index.css"
 
 const Home = () => {
 
-  const {insertTweet, loading} = useInsertTweet("tweets")
+  const {insertTweet, tweets, loading} = useInsertTweet("tweets")
   const [tweet, setTweet] = useState("")
   const [tags, setTags] = useState("")
   const {user} = useAuthValue()
   const [inputError, setInputError] = useState(false)
-  const {tweets} = useGetTweets("tweets")
   const [tagsError, setTagsError] = useState(false)
 
   const handleAddTweet = async() => {
-    if(tweet === " "){
+    setInputError(false)
+    
+    // Verificação se tweet não está em branco
+    if(tweet.trim() === ''){
       setInputError(true)
       return
     }
 
-    setInputError(false)
-
     const formatHashes = (tagBruta) =>{
       
-      const tagsArr = tagBruta.toLowerCase().split(" ") 
+      const tagsArr = tagBruta.toLowerCase().trim().split(" ")
+
 
       // Eliminando espaços em branco
-      let whiteArr = tagsArr.indexOf("")
+      let whiteArr;
       for(let i = 0; tagsArr.includes("") ; i++){
         whiteArr = tagsArr.indexOf("")
-        if(whiteArr > 0){
+        if(whiteArr >= 0){
           tagsArr.splice(whiteArr, 1)
-        }else{
-          return
         }
       }
 
-      const tagsArrBruto = tagBruta.split('')
-      const tagsHashVerify = tagsArrBruto.includes("#")
-      const tagsVirgVerify = tagsArrBruto.includes(",")
-      const tagsDotVerify = tagsArrBruto.includes(".")
+      // Verificar se é uma hashtag válida e adiciona em um array de hashtags validas
+      let testEspecialChar
+      let tagsArrRef = tagsArr
+      let tagsOficialFormated = []
+      for(let i=0; i < tagsArr.length ;i++){
+        testEspecialChar = tagsArrRef[i].replace(/[^a-z0-9]/gi,'')
+        if(tagsArrRef[i].length > 1 && testEspecialChar === ""){
+          setTagsError("Não insira somente caracteres especiais em suas hashtags.")
+          i = tagsArr.length
+          return
+        }else if(tagsArrRef[i].length === 1 && testEspecialChar === ""){
+          setTagsError("Não insira caracteres especiais isolados.")
+          i = tagsArr.length
+          return
+        }else if(tagsArrRef[i].includes("@")){
+          setTagsError("As hashtags não podem conter @")
+          i = tagsArr.length
+          return
+        }
 
-      if(!tagsHashVerify && !tagsVirgVerify){
-        return tagsArr
+        let corrected = tagsArrRef[i].replace(/,/g,"").replace(/\./g, "").replace(/#/gi, "").replace(/#/gi, "")
+        tagsOficialFormated.push(corrected)       
+        
       }
-
-      setTagsError(true)
-      return 
+      
+      // Retorna um array de hashtags válidas
+      return tagsOficialFormated
 
     }
 
     const tagsOficial = formatHashes(tags)
     if(tagsOficial === undefined){
-      return
+        return
     }else{
       
       const newTweet = {
-        tweet,
+        tweet: tweet.trim(),
         tags: tagsOficial,
         tweetedBy: user.displayName,
         uid: user.uid,
@@ -69,7 +84,6 @@ const Home = () => {
       }
   
       await insertTweet(newTweet)
-  
       setTags("")
       setTweet("")
     }
@@ -91,8 +105,8 @@ const Home = () => {
             <div className={styles.inputs}>
               <input type="text" name="tweet" className={inputError === true ? (styles.inputError) : ""} placeholder='Type something' onChange={(e) => setTweet(e.target.value) } value={tweet} required />
 
-              <input type="text" name="tags" className={tagsError === true ? (styles.inputError) : ""} placeholder='Tags' onChange={(e) => {setTags(e.target.value); setTagsError(false)}} value={tags}/>
-              {tagsError && <span>Não é necessário colocar <b>#</b> ou <b>,</b> nas tags.</span>}
+              <input type="text" name="tags" className={tagsError ? (styles.inputError) : ""} placeholder='Tags' onChange={(e) => {setTags(e.target.value); setTagsError(false)}} value={tags}/>
+              
 
               {!loading && (
                 <button onClick={handleAddTweet}>
@@ -108,16 +122,20 @@ const Home = () => {
               )}
               
             </div>
+              {tagsError && tagsError === "" ? <span>Não é necessário colocar <b>#</b> ou <b>,</b> nas tags.</span>: <p>{tagsError}</p>}
 
           </div>
 
           <hr />
 
           <div className={styles.tweets}>
+            {
+              loading && <span className='load_tweets'><div className="loadCircle"></div></span>
+            }
               {
-                tweets && tweets.map(tweetInfo =>(
+                tweets && (tweets.map(tweetInfo =>(
                   <Tweet key={tweetInfo.id} data={tweetInfo}/>
-                ))
+                )))
               }
           </div>
         </div>

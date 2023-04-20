@@ -43,19 +43,17 @@ const Explorer = () => {
       let tag =  tagsArr.toString()
 
       // Verificar se é uma hashtag válida
-      if(tag.length === 1){
-        const test = tag.replace(/[^a-z0-9]/gi,'')
-        if(test === ""){
+      if(tag){
+        const testEspecialChar = tag.replace(/[^a-z0-9]/gi,'')
+        if(testEspecialChar === ""){
           setTagsError("Insira uma tag válida")
           return
         }
+        // Tirando todas as # da hashtag
+        tag = tag.replace(/#/gi, "")
       }
 
-      if(tag.includes("#")){
-        tag = tag.replace(/#/g, "")
-      }
-
-      return tagsArr
+      return tag
 
     }
 

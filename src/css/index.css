@@ -164,6 +164,14 @@ button {
   height: auto;
   padding: 80px 32px;
 }
+.main_container .main_container_inbox .load_tweets {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
 
 .btn_menu {
   display: none;
