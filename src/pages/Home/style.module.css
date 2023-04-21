@@ -33,10 +33,10 @@
 .type_tweet .insert_tweets .inputs_tweets label {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin-top: 16px;
 }
 .type_tweet .insert_tweets .inputs_tweets label svg {
-  display: inline;
   margin-right: 12px;
   width: 20px;
 }
@@ -57,7 +57,7 @@
   color: #AEADB2;
   font-size: 16px;
   font-family: "Montserrat";
-  transition: height 0.2s;
+  transition: color 0.2s;
 }
 .type_tweet .insert_tweets .inputs_tweets label textarea::-moz-placeholder {
   color: #5B29E5;
@@ -70,7 +70,7 @@
 .type_tweet .insert_tweets .inputs_tweets label textarea::-webkit-scrollbar {
   width: 0;
 }
-.type_tweet .insert_tweets .inputs_tweets .inputError input {
+.type_tweet .insert_tweets .inputs_tweets .inputError textarea {
   color: #FF3535;
 }
 .type_tweet .insert_tweets .inputs_tweets textarea.textarea_tweet {
@@ -122,11 +122,6 @@
   top: 0;
   height: 100%;
   width: 100%;
-}
-.type_tweet .insert_tweets .inputError {
-  border-bottom: 2px solid #FF3535;
-  animation: inputError 0.17s ease-in-out;
-  animation-iteration-count: 3;
 }
 .type_tweet .submit_tweet {
   display: flex;
