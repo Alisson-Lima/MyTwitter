@@ -10,41 +10,112 @@
   }
 }
 .type_tweet {
+  position: relative;
   width: 100%;
-  margin-bottom: 72px;
-}
-.type_tweet .insert_values {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  max-width: 100%;
-  gap: 32px;
+  height: auto;
+  padding: 24px;
+  background: #120F1A;
+  border-radius: 8px;
   margin-bottom: 16px;
 }
-.type_tweet .insert_values a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-}
-.type_tweet .insert_values a img {
-  max-width: 80px;
-}
-.type_tweet .insert_values .avatar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
+.type_tweet .insert_tweets {
   position: relative;
-  min-width: 80px;
-  min-height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 100%;
+  gap: 24px;
+}
+.type_tweet .insert_tweets .inputs_tweets {
+  position: relative;
+  width: 100%;
+}
+.type_tweet .insert_tweets .inputs_tweets label {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+}
+.type_tweet .insert_tweets .inputs_tweets label svg {
+  display: inline;
+  margin-right: 12px;
+  width: 20px;
+}
+.type_tweet .insert_tweets .inputs_tweets label svg path {
+  fill: #26232E;
+}
+.type_tweet .insert_tweets .inputs_tweets label textarea {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 32px;
+  background: transparent;
+  border: none;
+  line-height: 160%;
+  padding: 3px 0 0;
+  resize: none;
+  outline: transparent;
+  color: #AEADB2;
+  font-size: 16px;
+  font-family: "Montserrat";
+  transition: height 0.2s;
+}
+.type_tweet .insert_tweets .inputs_tweets label textarea::-moz-placeholder {
+  color: #5B29E5;
+  font-weight: 500;
+}
+.type_tweet .insert_tweets .inputs_tweets label textarea::placeholder {
+  color: #5B29E5;
+  font-weight: 500;
+}
+.type_tweet .insert_tweets .inputs_tweets label textarea::-webkit-scrollbar {
+  width: 0;
+}
+.type_tweet .insert_tweets .inputs_tweets .inputError input {
+  color: #FF3535;
+}
+.type_tweet .insert_tweets .inputs_tweets textarea.textarea_tweet {
+  position: relative;
+  display: block;
+  position: relative;
+  padding-top: 12px;
+  width: 100%;
+  height: 80px;
+  background: transparent;
+  line-height: 160%;
+  outline: none;
+  border: transparent;
+  resize: none;
+  color: #AEADB2;
+  font-size: 16px;
+  font-family: "Montserrat";
+}
+.type_tweet .insert_tweets .inputs_tweets textarea.textarea_tweet::-webkit-scrollbar {
+  width: 0;
+}
+.type_tweet .insert_tweets .inputs_tweets textarea.inputError::-moz-placeholder {
+  color: #FF3535;
+}
+.type_tweet .insert_tweets .inputs_tweets textarea.inputError::placeholder {
+  color: #FF3535;
+}
+.type_tweet .insert_tweets .inputs_tweets hr {
+  display: inline-block;
+  border: 1px solid #1C1924;
+  margin: 24px 0 16px;
+  width: 100%;
+}
+.type_tweet .insert_tweets .avatar_tweet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-width: 50px;
+  min-height: 50px;
   border-radius: 100%;
-  max-width: 80px;
-  max-height: 80px;
   overflow: hidden;
   text-align: center;
 }
-.type_tweet .insert_values .avatar img {
+.type_tweet .insert_tweets .avatar_tweet img {
   display: inline-block;
   position: absolute;
   left: 0;
@@ -52,75 +123,47 @@
   height: 100%;
   width: 100%;
 }
-.type_tweet .insert_values input {
-  display: block;
-  width: 100%;
-  padding: 16px 0;
-  background: transparent;
-  color: #AEADB2;
-  border: transparent;
-  border-bottom: 2px solid #26232E;
-  outline: transparent;
-  font-size: 16px;
-  font-family: "Montserrat";
-  transition: 0.2s;
+.type_tweet .insert_tweets .inputError {
+  border-bottom: 2px solid #FF3535;
+  animation: inputError 0.17s ease-in-out;
+  animation-iteration-count: 3;
 }
-.type_tweet .insert_values input::-moz-placeholder {
-  color: #535059;
+.type_tweet .submit_tweet {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
-.type_tweet .insert_values input::placeholder {
-  color: #535059;
-}
-.type_tweet .insert_values input:focus {
-  border-bottom-color: #5B29E5;
-}
-.type_tweet .insert_values button {
+.type_tweet .submit_tweet button {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 48px;
   border-radius: 8px;
   border: none;
   background: #5B29E5;
   transition: 0.4s;
 }
-.type_tweet .insert_values button svg {
+.type_tweet .submit_tweet button svg {
   position: relative;
   left: -2px;
 }
-.type_tweet .insert_values button:hover {
+.type_tweet .submit_tweet button:hover {
   filter: brightness(1.2);
 }
-.type_tweet .insert_values .inputs {
-  width: 100%;
-  display: grid;
-  gap: 24px;
-  grid-template-areas: "a a a" "b b c";
+.type_tweet .submit_tweet button.button_error {
+  background: #FF3535;
 }
-.type_tweet .insert_values .inputs input:nth-child(1) {
-  grid-area: a;
+.type_tweet .submit_tweet button.button_error svg path {
+  fill: #1C1924;
 }
-.type_tweet .insert_values .inputs input:nth-child(2) {
+
+.insert_erro {
   display: block;
-  width: 100%;
-  max-width: 350px;
-  grid-area: b;
-}
-.type_tweet .insert_values .inputs button {
-  grid-area: c;
-}
-.type_tweet .insert_values .inputError {
-  border-bottom: 2px solid #FF3535;
-  animation: inputError 0.17s ease-in-out;
-  animation-iteration-count: 3;
-}
-.type_tweet .insert_erro {
-  display: block;
-  margin: 0;
+  text-align: center;
   width: 100%;
   color: #FF3535;
+  font-weight: 600;
 }
 
 .tweets {
