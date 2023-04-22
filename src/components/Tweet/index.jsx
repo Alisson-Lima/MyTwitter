@@ -1,10 +1,23 @@
+// React hooks
+import { useState, useEffect } from "react"
+
+// My hooks
+import { useRef } from "react"
+
+// Styles
 import styles from "./style.module.css"
-import { useState } from "react"
-import { useAuthValue } from "../../context/AuthContext"
+
 const Tweet = ({data}) => {
 
+  // States
+  const [tweet, setTweet] = useState(data.tweet)
   const [showTags, setShowTags] = useState(false)
-  const {user} = useAuthValue()
+  const [seeMore, setSeeMore] = useState(false)
+
+  // Hooks
+  const tweetTextRef = useRef(null)
+
+  // Functions
   const handleShowTags = () =>{
     
     if(showTags){
@@ -14,6 +27,35 @@ const Tweet = ({data}) => {
       setShowTags(true)
     }
   }
+
+  const handleSeeMore = ()=>{
+    if(seeMore){
+      setTweet(tweet.split("").slice(0, 149).concat("...").join(""))
+      tweetHeight()
+      setSeeMore(false)    
+    }else{
+      setTweet(data.tweet)
+      tweetHeight()
+      setSeeMore(true)    
+    }
+  }
+
+  const tweetHeight = () =>{
+    tweetTextRef.current.style.height = 32+"px";
+    tweetTextRef.current.style.height = tweetTextRef.current.scrollHeight + "px";
+  }
+
+  // useEffects
+  useEffect(()=>{
+    let tweet = data.tweet.split("")
+      if(tweet.length > 150){
+        let a = tweet.slice(0, 150).concat("...").join("")
+        setTweet(a)
+      }else{
+        tweetHeight()
+      }
+  },[])
+  useEffect(tweetHeight, [tweet])
 
   return (
     <div className={styles.tweet} onClickCapture={() => setShowTags(false)}>
@@ -26,7 +68,10 @@ const Tweet = ({data}) => {
             <p className="small">{data.postCreatedData}</p>
         </span>
         </div>
-        <p>{data.tweet}</p>
+        <textarea ref={tweetTextRef} value={tweet} readOnly></textarea>
+        {
+          (data.tweet.length > 150) && <span className={styles.see_more} onClick={handleSeeMore}>See More</span>
+        }
         <label className={styles.hash_button} onClickCapture={handleShowTags}>
           <div>
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,14 +80,14 @@ const Tweet = ({data}) => {
           </div>
           Hashtags
         </label>
-          <ul className={styles.hash_container + " " + (showTags ? "show": "hidden")}>
-            {data && data.tags != 0 && data.tags.map(tag =>(
-              <li key={tag}><b>#{tag}</b></li>
-            ))}
-            {data && data.tags == 0 && (
-              <li>Esse post não tem hashtag.</li>
-            )}
-          </ul>
+        {/* <ul className={styles.hash_container + " " + (showTags ? "show": "hidden")}>
+          {data && data.tags != 0 && data.tags.map(tag =>(
+            <li key={data.id + tag}><b>#{tag}</b></li>
+          ))}
+          {data && data.tags == 0 && (
+            <li>Esse post não tem hashtag.</li>
+          )}
+        </ul> */}
     </div>
   )
 }
