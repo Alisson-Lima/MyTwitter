@@ -60,7 +60,16 @@ const TypeTweet = () => {
         if(!(tagBruta.trim() === "")){
           const tagsArr = tagBruta.toLowerCase().trim().split(" ")
     
-    
+          // Limitando tags à 20 caracteres
+          for(let i = 0; i < tagsArr.length; i++){
+            if(tagsArr[i].length > 25){
+              setTagsError("Você não pode inserir uma hashtag com mais de 20 caracteres!")
+              return
+            }
+          }
+
+
+
           // Eliminando espaços em branco
           let whiteArr;
           for(let i = 0; tagsArr.includes("") ; i++){
@@ -116,7 +125,8 @@ const TypeTweet = () => {
           uid: user.uid,
           userAvatar: user.photoURL,
         }
-    
+        console.log(tagsOficial)
+        return
         await insertTweet(newTweet)
         setTags("")
         setTweet("")
