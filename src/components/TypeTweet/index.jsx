@@ -19,6 +19,8 @@ const TypeTweet = () => {
     const [inputError, setInputError] = useState(false)
     const [counterTweet, setCounterTweet] = useState(0) 
     const [tweetCharColor, setTweetCharColor] = useState(0) 
+    // const [lengthTweet, setLengthTweet] = useState([])
+
     // Tags
     const [tags, setTags] = useState("")
     const [tagsError, setTagsError] = useState(false)
@@ -45,6 +47,17 @@ const TypeTweet = () => {
         return
       }
       
+      // Formatação de enters
+      // tweet.map((item, i) =>{
+      //   if(lengthTweet[i]+1 === lengthTweet[i+1]){
+      //     if(lengthTweet[i]+2 === lengthTweet[i+2]){
+      //       tweet.split("")
+      //       tweet.splice()
+      //     }
+      //     return
+      //   }
+      // })
+
       // Formatação de tags
       const formatHashes = (tagBruta) =>{
         
@@ -80,7 +93,7 @@ const TypeTweet = () => {
             return
           }
   
-          let corrected = tagsArrRef[i].replace(/,/g,"").replace(/\./g, "").replace(/#/gi, "").replace(/#/gi, "")
+          let corrected = tagsArrRef[i].replace(/,/g,"").replace(/\./g, "").replace(/#/gi, "").replace(/\\/gi, "")
           tagsOficialFormated.push(corrected)       
           
         }
@@ -90,6 +103,36 @@ const TypeTweet = () => {
   
       }
   
+      // const formatTweet = (tweet) =>{
+      //     const enterPressed = tweet.split("").includes("\n")
+
+      //     // teclou o enter
+      //     if(enterPressed){
+      //       let index =[]
+      //       let tweetSplited = tweet.split("\n")
+      //       for(let i = 0; i <= tweetSplited.length; i++){
+      //           let isEnter = tweetSplited[i] === ""
+      //           let inow = i
+      //           if(isEnter){
+      //             index.push(inow)
+      //           }
+      //       }
+      //       // console.log(index[0+1])
+      //       // for(let i = 1; i < index.length; i++){
+      //       //   let anterior = index[i]+1
+      //       //   let futuro = index[i+1]
+      //       //   if(anterior === futuro){
+      //       //     let a = tweetSplited.splice(anterior, 1)
+      //       //     console.log(tweetSplited)
+      //       //     console.log(a)
+      //       //   }
+      //       // }
+      //       // console.log(index)
+      //     }
+      // }
+
+      // formatTweet(tweet)
+
       // Post do tweet 
       const tagsOficial = formatHashes(tags)
       if(tagsOficial === undefined){
@@ -134,8 +177,24 @@ const TypeTweet = () => {
       }
     }
   
-    useEffect(() => {resizeTextAreaTweet(); charCounter("textareaTweet", counterTweet, tweetCharLimit)}, [tweet]);
-    useEffect(() => {resizeTextAreaTags(); charCounter("textareaTag", counterTag, tagCharLimit)}, [tags]);
+    useEffect(() => {resizeTextAreaTweet(); charCounter("textareaTweet", counterTweet, tweetCharLimit)}, [tweet, counterTweet]);
+    useEffect(() => {resizeTextAreaTags(); charCounter("textareaTag", counterTag, tagCharLimit)}, [tags, counterTag]);
+
+    // const handleEnter = (e)=>{
+    //   return
+    //   let key = e.keyCode || e.which
+    //   let a = tweet.length
+    //   console.log(a)
+    //   if(key === 13){
+    //     // if(a === 0){
+    //     //   setLengthTweet([])
+    //     // }
+    //     lengthTweet.push(a)
+    //     // console.log(lengthTweet)
+    //   }
+    //   // tweet
+    // }
+
   return (
     <>
         <div className={styles.type_tweet}>
@@ -150,7 +209,7 @@ const TypeTweet = () => {
                 {/* input */}
                 <div className={styles.inputs_tweets}>
                 <label>
-                    <textarea name="tweet" ref={textareaRef} className={styles.textarea_tweet +" "+ (inputError ? (styles.inputError) : "")} placeholder='Type something here.' onChange={(e) => {setTweet(e.target.value); setInputError(false); setCounterTweet(e.target.value.length)} } value={tweet} maxLength={tweetCharLimit} required ></textarea>
+                    <textarea name="tweet" ref={textareaRef} className={styles.textarea_tweet +" "+ (inputError ? (styles.inputError) : "")} placeholder='Type something here.' onChange={(e) => {setTweet(e.target.value); setInputError(false); setCounterTweet(e.target.value.length)} } value={tweet} maxLength={tweetCharLimit}  required ></textarea>
 
                     <span><span style={{color: tweetCharColor}}>{counterTweet}</span>/{tweetCharLimit}</span>
                 </label>

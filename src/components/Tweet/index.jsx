@@ -13,6 +13,7 @@ const Tweet = ({data}) => {
   const [tweet, setTweet] = useState(data.tweet)
   const [showTags, setShowTags] = useState(false)
   const [seeMore, setSeeMore] = useState(false)
+  const [seeMoreBtn, setSeeMoreBtn] = useState("See More")
 
   // Hooks
   const tweetTextRef = useRef(null)
@@ -22,9 +23,11 @@ const Tweet = ({data}) => {
     
     if(showTags){
       setShowTags(false)
+
       return
     }else{
       setShowTags(true)
+
     }
   }
 
@@ -32,11 +35,13 @@ const Tweet = ({data}) => {
     if(seeMore){
       setTweet(tweet.split("").slice(0, 149).concat("...").join(""))
       tweetHeight()
-      setSeeMore(false)    
+      setSeeMore(false) 
+      setSeeMoreBtn("See More")   
     }else{
       setTweet(data.tweet)
       tweetHeight()
       setSeeMore(true)    
+      setSeeMoreBtn("See less")
     }
   }
 
@@ -54,7 +59,7 @@ const Tweet = ({data}) => {
       }else{
         tweetHeight()
       }
-  },[])
+  },[data.tweet])
   useEffect(tweetHeight, [tweet])
 
   return (
@@ -70,7 +75,7 @@ const Tweet = ({data}) => {
         </div>
         <textarea ref={tweetTextRef} value={tweet} readOnly></textarea>
         {
-          (data.tweet.length > 150) && <span className={styles.see_more} onClick={handleSeeMore}>See More</span>
+          (data.tweet.length > 150) && <span className={styles.see_more} onClick={handleSeeMore}>{seeMoreBtn}</span>
         }
         <label className={styles.hash_button} onClickCapture={handleShowTags}>
           <div>
@@ -80,14 +85,14 @@ const Tweet = ({data}) => {
           </div>
           Hashtags
         </label>
-        {/* <ul className={styles.hash_container + " " + (showTags ? "show": "hidden")}>
-          {data && data.tags != 0 && data.tags.map(tag =>(
+        <ul className={styles.hash_container + " " + (showTags ? "show": "hidden")}>
+          {data && data.tags !== 0 && data.tags.map(tag =>(
             <li key={data.id + tag}><b>#{tag}</b></li>
           ))}
-          {data && data.tags == 0 && (
+          {data && data.tags === 0 && (
             <li>Esse post não tem hashtag.</li>
           )}
-        </ul> */}
+        </ul>
     </div>
   )
 }
