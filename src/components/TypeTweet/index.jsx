@@ -189,7 +189,7 @@ const TypeTweet = () => {
         const limited = element.current.value.substring(0, limit-1)
         if(element === textareaRef){
           setTweet(limited)
-        }else{
+        }else if(element === textareaTagsRef){
           setTags(limited)
         }
       }

@@ -31,7 +31,7 @@ const Home = () => {
               tweets && !(tweets.length === 0) ? (tweets.map(tweetInfo =>(
                 <Tweet key={tweetInfo.id} data={tweetInfo}/>
               ))) : (
-                <p>Ainda não foi twitado nada, seja o primeiro da plataforma!</p>
+                <span className='load_tweets'><div className="loadCircle"></div></span>
               )
             }
           </div>
