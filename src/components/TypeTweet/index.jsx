@@ -10,7 +10,6 @@ import { useAuthValue } from '../../context/AuthContext'
 // styles
 import styles from "./style.module.css"
 import "../../css/index.css"
-import { limit } from 'firebase/firestore'
 
 const TypeTweet = () => {
 
@@ -20,13 +19,10 @@ const TypeTweet = () => {
     const [inputError, setInputError] = useState(false)
     const [counterTweet, setCounterTweet] = useState(0) 
     const [tweetCharColor, setTweetCharColor] = useState(0) 
-    // const [lengthTweet, setLengthTweet] = useState([])
 
     // Tags
     const [tags, setTags] = useState("")
     const [tagsError, setTagsError] = useState(false)
-    const [counterTag, setCounterTag] = useState(0) 
-    const [tagCharColor, setTagCharColor] = useState(0) 
     
     
     // Hooks
@@ -37,7 +33,6 @@ const TypeTweet = () => {
   
     // Constants
     const tweetCharLimit = 280
-    const tagCharLimit = 80
   
     const handleAddTweet = async() => {
       setInputError(false)
@@ -107,36 +102,6 @@ const TypeTweet = () => {
         }
   
       }
-  
-      // const formatTweet = (tweet) =>{
-      //     const enterPressed = tweet.split("").includes("\n")
-
-      //     // teclou o enter
-      //     if(enterPressed){
-      //       let index =[]
-      //       let tweetSplited = tweet.split("\n")
-      //       for(let i = 0; i <= tweetSplited.length; i++){
-      //           let isEnter = tweetSplited[i] === ""
-      //           let inow = i
-      //           if(isEnter){
-      //             index.push(inow)
-      //           }
-      //       }
-      //       // console.log(index[0+1])
-      //       // for(let i = 1; i < index.length; i++){
-      //       //   let anterior = index[i]+1
-      //       //   let futuro = index[i+1]
-      //       //   if(anterior === futuro){
-      //       //     let a = tweetSplited.splice(anterior, 1)
-      //       //     console.log(tweetSplited)
-      //       //     console.log(a)
-      //       //   }
-      //       // }
-      //       // console.log(index)
-      //     }
-      // }
-
-      // formatTweet(tweet)
 
       // Post do tweet 
       const tagsOficial = formatHashes(tags)
@@ -155,7 +120,6 @@ const TypeTweet = () => {
         await insertTweet(newTweet)
         setTags("")
         setTweet("")
-        setCounterTag(0)
         setCounterTweet(0)
       }
     }
@@ -174,58 +138,27 @@ const TypeTweet = () => {
     const charCounter = (element, chars, limit) =>{
       
       if(chars >= Math.floor((limit / 10 )* 9)){
-        element === "textareaTweet" ? setTweetCharColor("#FF3535") : setTagCharColor("#FF3535")
+        element === "textareaTweet" && setTweetCharColor("#FF3535")
       }else if(chars > Math.floor(limit / 2)){
-        element === "textareaTweet" ? setTweetCharColor("#FFD541") : setTagCharColor("#FFD541")
+        element === "textareaTweet" && setTweetCharColor("#FFD541")
       }else if(chars <= Math.floor(limit / 2)){
-        element === "textareaTweet" ? setTweetCharColor("#6E6D73") : setTagCharColor("#6E6D73")
+        element === "textareaTweet" && setTweetCharColor("#6E6D73")
       }
     }
 
-    const handleLimitChar = (e, limit, element) => {
+    const handleLimitChar = (limit, element) => {
       const inputLength = element.current.value.length
       const maxChar = limit
       if(inputLength >= maxChar){
         const limited = element.current.value.substring(0, limit-1)
         if(element === textareaRef){
           setTweet(limited)
-        }else if(element === textareaTagsRef){
-          setTags(limited)
         }
       }
 
     }
-    const handleLimitCharTags = (e, limit, element) => {
-      const inputLength = element.current.value.length
-      const maxChar = limit
-      if(inputLength >= maxChar){
-        const limited = element.current.value.substring(0, limit-1)
-        if(element === textareaRef){
-          setTweet(limited)
-        }else if(element === textareaTagsRef){
-          setTags(limited)
-        }
-      }
-
-    }
-  
     useEffect(() => {resizeTextAreaTweet(); charCounter("textareaTweet", counterTweet, tweetCharLimit)}, [tweet, counterTweet]);
-    useEffect(() => {resizeTextAreaTags(); charCounter("textareaTag", counterTag, tagCharLimit)}, [tags, counterTag]);
-
-    // const handleEnter = (e)=>{
-    //   return
-    //   let key = e.keyCode || e.which
-    //   let a = tweet.length
-    //   console.log(a)
-    //   if(key === 13){
-    //     // if(a === 0){
-    //     //   setLengthTweet([])
-    //     // }
-    //     lengthTweet.push(a)
-    //     // console.log(lengthTweet)
-    //   }
-    //   // tweet
-    // }
+    useEffect(() => resizeTextAreaTags(), [tags]);
 
   return (
     <>
@@ -241,7 +174,7 @@ const TypeTweet = () => {
                 {/* input */}
                 <div className={styles.inputs_tweets}>
                 <label>
-                    <textarea name="tweet" ref={textareaRef} className={styles.textarea_tweet +" "+ (inputError ? (styles.inputError) : "")} placeholder='Type something here.' maxLength={tweetCharLimit} onChange={(e) => {setTweet(e.target.value); setInputError(false); setCounterTweet(e.target.value.length)} } value={tweet} onKeyDown={(e) => handleLimitChar(e, tweetCharLimit, textareaRef)}  required ></textarea>
+                    <textarea name="tweet" ref={textareaRef} className={styles.textarea_tweet +" "+ (inputError ? (styles.inputError) : "")} placeholder='Type something here.' maxLength={tweetCharLimit} onChange={(e) => {setTweet(e.target.value); setInputError(false); setCounterTweet(e.target.value.length)} } value={tweet} onKeyDown={() => handleLimitChar(tweetCharLimit, textareaRef)}  required ></textarea>
 
                     <span><span style={{color: tweetCharColor}}>{counterTweet}</span>/{tweetCharLimit}</span>
                 </label>
@@ -249,9 +182,8 @@ const TypeTweet = () => {
                     <svg viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M4.5 0.75C4.5 0.335786 4.16421 0 3.75 0C3.33579 0 3 0.335786 3 0.75V3H0.75C0.335786 3 0 3.33579 0 3.75C0 4.16421 0.335786 4.5 0.75 4.5H3V8H0.75C0.335786 8 0 8.33579 0 8.75C0 9.16421 0.335786 9.5 0.75 9.5H3V11.75C3 12.1642 3.33579 12.5 3.75 12.5C4.16421 12.5 4.5 12.1642 4.5 11.75V9.5H8V11.75C8 12.1642 8.33579 12.5 8.75 12.5C9.16421 12.5 9.5 12.1642 9.5 11.75V9.5H11.75C12.1642 9.5 12.5 9.16421 12.5 8.75C12.5 8.33579 12.1642 8 11.75 8H9.5V4.5H11.75C12.1642 4.5 12.5 4.16421 12.5 3.75C12.5 3.33579 12.1642 3 11.75 3H9.5V0.75C9.5 0.335786 9.16421 0 8.75 0C8.33579 0 8 0.335786 8 0.75V3H4.5V0.75ZM4.5 4.5V8H8V4.5H4.5Z" fill='transparent'/>
                     </svg>
-                    <textarea name="tags" className={styles.textarea_tags + " " + (inputError ? "" : tagsError ? styles.inputError : "")} ref={textareaTagsRef} placeholder='Add your hashtags here' onChange={(e) => {setTags(e.target.value); setCounterTag(e.target.value.length);setTagsError(false)}} value={tags} maxLength={tagCharLimit} onKeyDown={(e) => handleLimitCharTags(e, tagCharLimit, textareaTagsRef)} ></textarea>
+                    <textarea name="tags" className={styles.textarea_tags + " " + (inputError ? "" : tagsError ? styles.inputError : "")} ref={textareaTagsRef} placeholder='Add your hashtags here' onChange={(e) => {setTags(e.target.value);setTagsError(false)}} value={tags}></textarea>
                 </label>
-                    <span className={styles.span_tags}><span style={{color: tagCharColor}}>{counterTag}</span>/{tagCharLimit}</span>
                 <hr />
                 </div>
 
