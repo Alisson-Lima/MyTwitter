@@ -209,7 +209,7 @@ const TypeTweet = () => {
                 {/* input */}
                 <div className={styles.inputs_tweets}>
                 <label>
-                    <textarea name="tweet" ref={textareaRef} className={styles.textarea_tweet +" "+ (inputError ? (styles.inputError) : "")} placeholder='Type something here.' onChange={(e) => {setTweet(e.target.value); setInputError(false); setCounterTweet(e.target.value.length)} } value={tweet} maxLength={tweetCharLimit}  required ></textarea>
+                    <textarea name="tweet" ref={textareaRef} className={styles.textarea_tweet +" "+ (inputError ? (styles.inputError) : "")} placeholder='Type something here.' onChange={(e) => {setTweet(e.target.value); setInputError(false); setCounterTweet(e.target.value.length)} } value={tweet} maxLength="280"  required ></textarea>
 
                     <span><span style={{color: tweetCharColor}}>{counterTweet}</span>/{tweetCharLimit}</span>
                 </label>
