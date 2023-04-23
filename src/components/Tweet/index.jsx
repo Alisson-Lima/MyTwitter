@@ -86,10 +86,12 @@ const Tweet = ({data}) => {
           Hashtags
         </label>
         <ul className={styles.hash_container + " " + (showTags ? "show": "hidden")}>
-          {data && data.tags !== 0 && data.tags.map(tag =>(
+
+          {data && data.tags.length !== 0 && data.tags.map(tag =>(
             <li key={data.id + tag}><b>#{tag}</b></li>
           ))}
-          {data && data.tags === 0 && (
+          
+          {data && data.tags.length === 0 && (
             <li>Esse post não tem hashtag.</li>
           )}
         </ul>

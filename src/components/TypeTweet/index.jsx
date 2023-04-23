@@ -62,45 +62,49 @@ const TypeTweet = () => {
       // Formatação de tags
       const formatHashes = (tagBruta) =>{
         
-        const tagsArr = tagBruta.toLowerCase().trim().split(" ")
-  
-  
-        // Eliminando espaços em branco
-        let whiteArr;
-        for(let i = 0; tagsArr.includes("") ; i++){
-          whiteArr = tagsArr.indexOf("")
-          if(whiteArr >= 0){
-            tagsArr.splice(whiteArr, 1)
+        if(!(tagBruta.trim() === "")){
+          const tagsArr = tagBruta.toLowerCase().trim().split(" ")
+    
+    
+          // Eliminando espaços em branco
+          let whiteArr;
+          for(let i = 0; tagsArr.includes("") ; i++){
+            whiteArr = tagsArr.indexOf("")
+            if(whiteArr >= 0){
+              tagsArr.splice(whiteArr, 1)
+            }
           }
-        }
-  
-        // Verificar se é uma hashtag válida e adiciona em um array de hashtags validas
-        let testEspecialChar
-        let tagsArrRef = tagsArr
-        let tagsOficialFormated = []
-        for(let i=0; i < tagsArr.length ;i++){
-          testEspecialChar = tagsArrRef[i].replace(/[^a-z0-9]/gi,'')
-          if(tagsArrRef[i].length > 1 && testEspecialChar === ""){
-            setTagsError("Não insira somente caracteres especiais em suas hashtags.")
-            i = tagsArr.length
-            return
-          }else if(tagsArrRef[i].length === 1 && testEspecialChar === ""){
-            setTagsError("Não insira caracteres especiais isolados.")
-            i = tagsArr.length
-            return
-          }else if(tagsArrRef[i].includes("@")){
-            setTagsError("As hashtags não podem conter @")
-            i = tagsArr.length
-            return
+    
+          // Verificar se é uma hashtag válida e adiciona em um array de hashtags validas
+          let testEspecialChar
+          let tagsArrRef = tagsArr
+          let tagsOficialFormated = []
+          for(let i=0; i < tagsArr.length ;i++){
+            testEspecialChar = tagsArrRef[i].replace(/[^a-z0-9]/gi,'')
+            if(tagsArrRef[i].length > 1 && testEspecialChar === ""){
+              setTagsError("Não insira somente caracteres especiais em suas hashtags.")
+              i = tagsArr.length
+              return
+            }else if(tagsArrRef[i].length === 1 && testEspecialChar === ""){
+              setTagsError("Não insira caracteres especiais isolados.")
+              i = tagsArr.length
+              return
+            }else if(tagsArrRef[i].includes("@")){
+              setTagsError("As hashtags não podem conter @")
+              i = tagsArr.length
+              return
+            }
+    
+            let corrected = tagsArrRef[i].replace(/,/g,"").replace(/\./g, "").replace(/#/gi, "").replace(/\\/gi, "")
+            tagsOficialFormated.push(corrected)       
+            
           }
-  
-          let corrected = tagsArrRef[i].replace(/,/g,"").replace(/\./g, "").replace(/#/gi, "").replace(/\\/gi, "")
-          tagsOficialFormated.push(corrected)       
           
+          // Retorna um array de hashtags válidas
+          return tagsOficialFormated
+        }else{
+          return []
         }
-        
-        // Retorna um array de hashtags válidas
-        return tagsOficialFormated
   
       }
   
