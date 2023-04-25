@@ -42,6 +42,15 @@ const TypeTweet = () => {
         setInputError("Você não pode enviar um tweet vazio")
         return
       }
+
+      // Formatação de enters
+      let tweetSpliced = tweet.split("\n")
+      let filterWords = tweetSpliced.filter(word => word.length > 0)
+      let tweetOficial = []
+
+      filterWords.map(word => tweetOficial.push(word, "\n"))
+      tweetOficial = tweetOficial.join("")
+      console.log(tweetOficial)
       
       // Formatação de enters
       // tweet.map((item, i) =>{
@@ -119,14 +128,13 @@ const TypeTweet = () => {
       }else{
         
         const newTweet = {
-          tweet: tweet.trim(),
+          tweet: tweetOficial.trim(),
           tags: tagsOficial,
           tweetedBy: user.displayName,
           uid: user.uid,
           userAvatar: user.photoURL,
         }
         console.log(tagsOficial)
-        return
         await insertTweet(newTweet)
         setTags("")
         setTweet("")

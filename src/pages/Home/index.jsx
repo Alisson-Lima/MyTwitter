@@ -28,11 +28,12 @@ const Home = () => {
               loading && <span className='load_tweets'><div className="loadCircle"></div></span>
             }
             {
-              tweets && !(tweets.length === 0) ? (tweets.map(tweetInfo =>(
+              tweets && tweets.map(tweetInfo =>(
                 <Tweet key={tweetInfo.id} data={tweetInfo}/>
-              ))) : (
-                <span className='load_tweets'><div className="loadCircle"></div></span>
-              )
+              ))
+            }
+            {
+              tweets && tweets.length === 0 && <p>Seja o primeiro a fazer um post na plataforma!</p>
             }
           </div>
         </div>
