@@ -21,15 +21,16 @@ const Nav = () => {
     }
   return (
     <>
-        <button onClick={handleOpenMenu} className={styles.btn_menu + " btn_menu " + styles.btn_open_menu}>
-            <span></span>
-            <span></span>
-            <span></span>
+        <button onClick={handleOpenMenu} className={styles.btn_menu + " " + styles.btn_open_menu}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="42" height="20" viewBox="0 0 42 20" fill="none">
+                <path d="M3 3H39M3 17.4001H28.2" stroke="#5B29E5" strokeWidth="5" strokeLinecap="round"/>
+            </svg>
         </button>
         <nav className={ styles.nav_container + " " + (openMenu ? styles.open : styles.close) } onClick={handleNav}>
-        <button onClick={handleCloseMenu} className={styles.btn_menu + " btn_menu " + styles.btn_close_menu}>
-            <span></span>
-            <span></span>
+        <button onClick={handleCloseMenu} className={styles.btn_menu + " " + styles.btn_close_menu}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M3 15.7279L15.7279 3M3 3.00002L15.7279 15.7279" stroke="#969499" strokeWidth="5" strokeLinecap="round"/>
+            </svg>
         </button>
             <div className={styles.thumbnail}></div>
             <ul>
