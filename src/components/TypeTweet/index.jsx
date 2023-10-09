@@ -6,6 +6,8 @@ import {Link} from "react-router-dom"
 import { useInsertTweet } from '../../hooks/useInsertTweet'
 import { useAuthValue } from '../../context/AuthContext'
 import { useFormatTweet } from '../../hooks/useFormatTweet'
+import { useResizeTypeArea } from '../../hooks/useResizeTypeArea'
+import { useCharCounter } from '../../hooks/useCharCounter'
 
 // styles
 import styles from "./style.module.css"
@@ -21,19 +23,22 @@ const TypeTweet = () => {
     const [counterTweet, setCounterTweet] = useState(0) 
     const [tweetCharColor, setTweetCharColor] = useState(0) 
 
-    // Refs
-    const textareaRef = useRef(null)
+    // Elements refs
+    const textareaTweetRef = useRef(null)
     const textareaTagsRef = useRef(null)
     
     // Hooks
     const {formatTweet, tweetFormarterError, tagsFormarterError} = useFormatTweet()
     const {user} = useAuthValue()
     const {insertTweet, loading} = useInsertTweet("tweets")
+    const {resizeArea} = useResizeTypeArea()
+    const {charCounter, charLimiter} = useCharCounter()
 
 
-    // Constants
+    // Tweet limit char variable
     const tweetCharLimit = 280
-  
+
+    // Add tweet in database  
     const handleAddTweet = async() => {
 
       let tweetFormated = formatTweet(tweet, tags) // return a object like {tweet, tags} or undefined for errors
@@ -56,42 +61,14 @@ const TypeTweet = () => {
       }
       
     }
-  
-    // useEffects
-    const resizeTextAreaTweet = () => {
-      textareaRef.current.style.height = 64+"px";
-      textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
-    };
-    const resizeTextAreaTags = () => {
-      textareaTagsRef.current.style.height = 32+"px";
-      textareaTagsRef.current.style.height = textareaTagsRef.current.scrollHeight + "px";
-    };
-  
-    // Functions
-    const charCounter = (element, chars, limit) =>{
-      
-      if(chars >= Math.floor((limit / 10 )* 9)){
-        element === "textareaTweet" && setTweetCharColor("#FF3535")
-      }else if(chars > Math.floor(limit / 2)){
-        element === "textareaTweet" && setTweetCharColor("#FFD541")
-      }else if(chars <= Math.floor(limit / 2)){
-        element === "textareaTweet" && setTweetCharColor("#6E6D73")
-      }
-    }
+    
+    // Resizing elements and counting characters
+    useEffect(() => {
+      resizeArea(textareaTweetRef, 32)
+      charCounter(textareaTweetRef, tweetCharLimit, setTweetCharColor)
+    }, [tweet, counterTweet, resizeArea, charCounter]);
 
-    const handleLimitChar = (limit, element) => {
-      const inputLength = element.current.value.length
-      const maxChar = limit
-      if(inputLength >= maxChar){
-        const limited = element.current.value.substring(0, limit-1)
-        if(element === textareaRef){
-          setTweet(limited)
-        }
-      }
-
-    }
-    useEffect(() => {resizeTextAreaTweet(); charCounter("textareaTweet", counterTweet, tweetCharLimit)}, [tweet, counterTweet]);
-    useEffect(() => resizeTextAreaTags(), [tags]);
+    useEffect(() => resizeArea(textareaTagsRef, 32), [tags, resizeArea]);
 
   return (
     <>
@@ -108,20 +85,20 @@ const TypeTweet = () => {
                 <div className={styles.inputs_tweets}>
                 <label>
                     <textarea 
-                    name="tweet" 
-                    ref={textareaRef} 
-                    className={styles.textarea_tweet +" "+ (tweetFormarterError ? (styles.error) : "")} 
-                    placeholder='Type something here.' 
-                    maxLength={tweetCharLimit} 
-                    onChange={(e) => {
-                      setTweet(e.target.value);
-                      setCounterTweet(e.target.value.length)
-                      }} 
-                    value={tweet} 
-                    onKeyDown={
-                      () => handleLimitChar(tweetCharLimit, textareaRef)
-                    }  
-                    required
+                      name="tweet" 
+                      ref={textareaTweetRef} 
+                      className={styles.textarea_tweet +" "+ (tweetFormarterError ? (styles.error) : "")} 
+                      placeholder='Type something here.' 
+                      maxLength={tweetCharLimit} 
+                      onChange={(e) => {
+                        setTweet(e.target.value);
+                        setCounterTweet(e.target.value.length)
+                        }} 
+                      value={tweet} 
+                      onKeyDown={
+                        () => charLimiter(textareaTweetRef, tweetCharLimit)
+                      }  
+                      required
                     ></textarea>
 
                     {/* Chars counter */}
