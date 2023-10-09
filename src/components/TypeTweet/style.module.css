@@ -51,6 +51,12 @@
   font-family: "Montserrat";
   transition: color 0.2s;
 }
+.type_tweet .insert_tweets .inputs_tweets label:nth-child(2) textarea.textarea_tags.error::-moz-placeholder {
+  color: #FF3535;
+}
+.type_tweet .insert_tweets .inputs_tweets label:nth-child(2) textarea.textarea_tags.error::placeholder {
+  color: #FF3535;
+}
 .type_tweet .insert_tweets .inputs_tweets label:nth-child(2) textarea.textarea_tags::-moz-placeholder {
   color: #5B29E5;
   font-weight: 500;
@@ -62,7 +68,7 @@
 .type_tweet .insert_tweets .inputs_tweets label:nth-child(2) textarea.textarea_tags::-webkit-scrollbar {
   width: 0;
 }
-.type_tweet .insert_tweets .inputs_tweets label:nth-child(2) textarea.inputError {
+.type_tweet .insert_tweets .inputs_tweets label:nth-child(2) textarea.error {
   color: #FF3535;
 }
 .type_tweet .insert_tweets .inputs_tweets label:first-child {
@@ -92,10 +98,10 @@
 .type_tweet .insert_tweets .inputs_tweets label:first-child textarea.textarea_tweet::-webkit-scrollbar {
   width: 0;
 }
-.type_tweet .insert_tweets .inputs_tweets label:first-child textarea.inputError::-moz-placeholder {
+.type_tweet .insert_tweets .inputs_tweets label:first-child textarea.error::-moz-placeholder {
   color: #FF3535;
 }
-.type_tweet .insert_tweets .inputs_tweets label:first-child textarea.inputError::placeholder {
+.type_tweet .insert_tweets .inputs_tweets label:first-child textarea.error::placeholder {
   color: #FF3535;
 }
 .type_tweet .insert_tweets .inputs_tweets span {

@@ -52,6 +52,10 @@
                     font-family: "Montserrat";
 
                     transition: color .2s;
+
+                    &.error::placeholder{
+                        color: $red;
+                    }
             
                     &::placeholder{
                         color: $purple-light;
@@ -61,7 +65,7 @@
                         width: 0;
                     }
                 }
-                textarea.inputError{
+                textarea.error{
                     color: $red;
                 }
             }
@@ -100,7 +104,7 @@
                     }
                 }
     
-                textarea.inputError::placeholder{
+                textarea.error::placeholder{
                     color: $red;
                 }
             }

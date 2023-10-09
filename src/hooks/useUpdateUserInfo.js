@@ -13,11 +13,10 @@ export const useUpdateUserInfo = () =>{
         }
     }
 
-    // {
-    //     user,
-    //     newName,
-    //     newAvatar
-    // }
+    useEffect(()=>{
+        return () => setCancelled(true)
+    },[])
+
     const update = async(data) =>{
         checkIfIsCancelled()
         setError(null)
@@ -35,9 +34,7 @@ export const useUpdateUserInfo = () =>{
 
     }
 
-    useEffect(()=>{
-        return () => setCancelled(true)
-    },[])
+
 
     return{update, loading, error}
 }

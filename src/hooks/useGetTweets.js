@@ -1,6 +1,10 @@
-import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
-import { where } from "firebase/firestore";
+// Firebase
+import { collection, query, orderBy, onSnapshot, where } from "@firebase/firestore";
+
+// React
 import { useState, useEffect } from "react";
+
+// db
 import { db } from "../firebase/config";
 
 export const useGetTweets = (docCollection, uid = null) =>{
@@ -19,9 +23,12 @@ export const useGetTweets = (docCollection, uid = null) =>{
     useEffect(()=>{
 
         const loadData = async() =>{
+
             checkIfIsCancelled()
             setLoading(true)
+
             const collectionRef = await collection(db, docCollection)
+            
             try {    
                 let q;
 

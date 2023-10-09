@@ -1,5 +1,5 @@
 import { db } from "../firebase/config"
-import { collection, addDoc, Timestamp, query, orderBy, onSnapshot } from "firebase/firestore"
+import { collection, addDoc, Timestamp, query, orderBy, onSnapshot } from "@firebase/firestore"
 import { useState, useEffect } from "react"
 export const useInsertTweet = (docCollection) =>{
 
@@ -15,6 +15,10 @@ export const useInsertTweet = (docCollection) =>{
         }
     }
 
+    useEffect(()=>{
+        return () => setCancelled(true)
+    },[])
+
     const insertTweet = async(tweetData) =>{
         checkIfIsCancelled()
         setError(null)
@@ -26,8 +30,6 @@ export const useInsertTweet = (docCollection) =>{
             const options = { year: 'numeric', month: 'long', day: 'numeric', hour: "numeric", minute: "numeric"}
             const postDate = date.toLocaleDateString("pt-br", options)
             
-            let q
-
             const newTweet = {...tweetData, createdAt: Timestamp.now(), postCreatedData: postDate}
             const res = await addDoc(collection(db, docCollection), newTweet)
             setRefresh(res)
@@ -35,16 +37,12 @@ export const useInsertTweet = (docCollection) =>{
 
 
         } catch (error) {
-            console.log("Error")
+            console.log(error)
             setLoading(false)
             setError(error.message)
         }
 
     }
-
-    useEffect(()=>{
-        return () => setCancelled(true)
-    },[])
 
     useEffect(()=>{
         const refreshData = async()=>{

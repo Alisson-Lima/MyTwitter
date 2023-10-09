@@ -1,15 +1,25 @@
-import "./css/index.css"
+// React Router Dom
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
-import LoginRegister from "./pages/LoginRegister";
-import Home from "./pages/Home";
 
+// Hooks
 import { useEffect, useState } from "react";
+
+// Authentication
 import { AuthProvider } from "./context/AuthContext"
-import {onAuthStateChanged} from "firebase/auth"
+import { onAuthStateChanged } from "@firebase/auth"
 import { useAuthentication } from "./hooks/useAuthentication";
+
+// Components
 import Nav from "./components/Nav";
+
+// Pages
 import Explorer from "./pages/Explorer";
 import MyPerfil from "./pages/MyPerfil";
+import Home from "./pages/Home";
+import LoginRegister from "./pages/LoginRegister";
+
+// Styles
+import "./css/index.css"
 
 function App() {
 

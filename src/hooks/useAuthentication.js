@@ -1,19 +1,24 @@
 import {getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, } from "@firebase/auth"
 import { useState, useEffect } from "react"
-import {db} from "../firebase/config"
+// import {db} from "../firebase/config"
+
 export const useAuthentication = () => {
 
     // Variáveis
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(false)
-    const auth = getAuth()
     const [cancelled, setCancelled] = useState(false)
+    const auth = getAuth()
 
     function checkIfIsCancelled(){
         if(cancelled){
             return
         }
     }
+
+    useEffect(()=>{
+        return () => setCancelled(true)
+    },[])
 
     // Criar usuário
     const createUser = async (data) => {
@@ -47,10 +52,6 @@ export const useAuthentication = () => {
             setLoading(false)
         }
     }
-
-    useEffect(()=>{
-        return () => setCancelled(true)
-    },[])
 
     // Logout
     const logout = () =>{
