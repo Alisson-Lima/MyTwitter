@@ -53,13 +53,13 @@ const LoginRegister = () => {
             avatar: registerAvatar,
         }
 
-        const res = await createUser(user)
+        await createUser(user)
 
         setRegisterEmail("")
         setRegisterPass("")
         setUserName("")
 
-        navigate("/home")
+        alert("faça login agora")
     }
 
     // Show password

@@ -17,6 +17,7 @@ import Explorer from "./pages/Explorer";
 import MyPerfil from "./pages/MyPerfil";
 import Home from "./pages/Home";
 import LoginRegister from "./pages/LoginRegister";
+import VerifyEmail from "./pages/VerifyEmail";
 
 // Styles
 import "./css/index.css"
@@ -38,20 +39,84 @@ function App() {
 
   return (
     <div id="App">
-      
-      <AuthProvider value={{user}}>
-        <BrowserRouter>
-        {user && <Nav/>}
-          <Routes>
-            <Route path="/" element={user ? <Navigate to="/home"/> : <LoginRegister/>}/>
-            <Route path="/home" element={user ? <Home/> : <LoginRegister/>}/>
-            <Route path="/explorer" element={user ? <Explorer/> : <LoginRegister/>}/>
-            <Route path="/perfil" element={user ? <MyPerfil/> : <LoginRegister/>}/>
-            <Route path="*" element={<p>Not found</p>}/>
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-
+          <AuthProvider value={{ user }}>
+            <BrowserRouter>
+              {user && <Nav />}
+              <Routes>
+                <Route
+                  path="/verifyemail"
+                  element={
+                    user ? (
+                      user.emailVerified ? (
+                        <Navigate to="/home" />
+                      ) : (
+                        <VerifyEmail />
+                      )
+                    ) : (
+                      <LoginRegister />
+                    )
+                  }
+                />
+                <Route
+                  path="/"
+                  element={
+                    user ? (
+                      user.emailVerified ? (
+                        <Navigate to="/home" />
+                      ) : (
+                        <Navigate to="/verifyemail" />
+                      )
+                    ) : (
+                      <LoginRegister />
+                    )
+                  }
+                />
+                <Route
+                  path="/home"
+                  element={
+                    user ? (
+                      user.emailVerified ? (
+                        <Home />
+                      ) : (
+                        <Navigate to="/verifyemail" />
+                      )
+                    ) : (
+                      <LoginRegister />
+                    )
+                  }
+                />
+                <Route
+                  path="/explorer"
+                  element={
+                    user ? (
+                      user.emailVerified ? (
+                        <Explorer />
+                      ) : (
+                        <Navigate to="/verifyemail" />
+                      )
+                    ) : (
+                      <LoginRegister />
+                    )
+                  }
+                />
+                <Route
+                  path="/perfil"
+                  element={
+                    user ? (
+                      user.emailVerified ? (
+                        <MyPerfil />
+                      ) : (
+                        <Navigate to="/verifyemail" />
+                      )
+                    ) : (
+                      <LoginRegister />
+                    )
+                  }
+                />
+                <Route path="*" element={<p>Not found</p>} />
+              </Routes>
+            </BrowserRouter>
+          </AuthProvider>
     </div>
   );
 }

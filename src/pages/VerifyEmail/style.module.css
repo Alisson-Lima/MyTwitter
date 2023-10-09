@@ -1,0 +1,24 @@
+.article_container {
+  max-width: 800px;
+  margin-top: 100px;
+}
+.article_container h4 {
+  color: #969499;
+}
+.article_container .refresh_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 8px;
+  padding: 16px 32px;
+  border: none;
+  background: #5B29E5;
+  transition: 0.4s;
+  color: #D2D1D7;
+  margin-top: 32px;
+}
+.article_container .refresh_button:hover {
+  filter: brightness(1.2);
+}

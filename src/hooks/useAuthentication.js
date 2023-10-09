@@ -1,4 +1,4 @@
-import {getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut, } from "@firebase/auth"
+import {getAuth, createUserWithEmailAndPassword, sendEmailVerification, updateProfile, signInWithEmailAndPassword, signOut, } from "@firebase/auth"
 import { useState, useEffect } from "react"
 // import {db} from "../firebase/config"
 
@@ -26,6 +26,9 @@ export const useAuthentication = () => {
         checkIfIsCancelled()
         try{
             const {user} = await createUserWithEmailAndPassword(auth, data.email, data.pass)
+            
+            await sendEmailVerification(user);
+
             await updateProfile(user, {
                 displayName: data.name,
                 photoURL: data.avatar
