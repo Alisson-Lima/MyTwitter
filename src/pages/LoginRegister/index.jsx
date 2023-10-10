@@ -58,8 +58,6 @@ const LoginRegister = () => {
         setRegisterEmail("")
         setRegisterPass("")
         setUserName("")
-
-        alert("faça login agora")
     }
 
     // Show password

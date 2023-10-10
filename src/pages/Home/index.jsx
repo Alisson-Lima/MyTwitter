@@ -8,6 +8,7 @@ import Tweet from '../../components/Tweet'
 // styles
 import "../../css/index.css"
 import styles from "./style.module.css"
+import FirstTweetMessage from '../../components/FirstTweetMessage'
 
 const Home = () => {
 
@@ -33,7 +34,7 @@ const Home = () => {
               ))
             }
             {
-              tweets && tweets.length === 0 && <p>Seja o primeiro a fazer um post na plataforma!</p>
+              tweets && tweets.length === 0 && <FirstTweetMessage/>
             }
           </div>
         </div>

@@ -41,7 +41,7 @@ function App() {
     <div id="App">
           <AuthProvider value={{ user }}>
             <BrowserRouter>
-              {user && <Nav />}
+              {user && user.emailVerified && <Nav />}
               <Routes>
                 <Route
                   path="/verifyemail"
@@ -64,7 +64,7 @@ function App() {
                       user.emailVerified ? (
                         <Navigate to="/home" />
                       ) : (
-                        <Navigate to="/verifyemail" />
+                        <LoginRegister />
                       )
                     ) : (
                       <LoginRegister />
