@@ -35,11 +35,11 @@ const LoginRegister = () => {
             pass: loginPass
         }
 
-        const res = await login(user)
+        await login(user)
 
         setLoginEmail("")
         setLoginPass("")
-        navigate("/home")
+        navigate("/verifyemail")
     }
 
     // Register
@@ -58,6 +58,10 @@ const LoginRegister = () => {
         setRegisterEmail("")
         setRegisterPass("")
         setUserName("")
+
+        navigate("/verifyemail")
+
+
     }
 
     // Show password

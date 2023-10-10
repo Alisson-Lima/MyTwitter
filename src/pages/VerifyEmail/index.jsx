@@ -24,8 +24,8 @@ const VerifyEmail = () => {
             </defs>
           </svg>
             <h1>Verifique o seu email</h1>
-            <p>Enviamos um link para o email: <b>{user.email}</b>. No momento em que você verificar o email, volte para esta página e <Link to="/home" onClick={handleRefresh} className={styles.link}>Clique Aqui</Link> ou recarregue a página.</p>
-            <Link to="/" className={styles.refresh_button}>Voltar para login</Link>
+            <p>Enviamos um link para o email: <b>{user.email}</b>. No momento em que você verificar o email, volte para esta página e <Link to="/home" onClick={handleRefresh} className={styles.link}>Clique Aqui</Link> para recarregar a página, ou volte na página de cadastro e <b>faça login</b>.</p>
+            <Link to="/" className={styles.refresh_button}>Voltar para página de cadastro</Link>
         </article>
     </div>
   )
