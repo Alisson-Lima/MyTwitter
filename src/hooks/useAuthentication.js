@@ -23,6 +23,7 @@ export const useAuthentication = () => {
     // Criar usuário
     const createUser = async (data) => {
         setLoading(true)
+        setError("")
         checkIfIsCancelled()
         try{
             const {user} = await createUserWithEmailAndPassword(auth, data.email, data.pass)
@@ -35,20 +36,18 @@ export const useAuthentication = () => {
             })
             setLoading(false)
             return user
-        }catch (error){
+        }catch (err){
 
             let systemErrorMessage = null
             
-            if(error.message.includes("Password")) {
+            if(err.message.includes("Password")) {
                 systemErrorMessage = "A senha precisa conter pelo menos 6 caracteres.";
-            }else if(error.message.includes("email-already")) {
+            }else if(err.message.includes("email-already")) {
                 systemErrorMessage = "E-mail já cadastrado.";
-            }else if(error.message.includes("userInternal.getIdToken")){
-                setLoading(false)
-                return
+            }else if(err.message.includes("userInternal.getIdToken")){
+                systemErrorMessage = "Erro interno do servidor, tente mais tarde"
             }else{
-                console.log(error)
-                systemErrorMessage = "Ocorreu um erro, por favor tentar mais tarde.";
+                systemErrorMessage = "Ocorreu um erro inesperado, por favor tentar mais tarde.";
             }
 
             setError(systemErrorMessage)
