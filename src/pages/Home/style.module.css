@@ -6,3 +6,41 @@ hr {
   margin-bottom: 48px;
   border: 1px solid #1C1924;
 }
+
+.scrollTopButton {
+  position: fixed;
+  display: block;
+  bottom: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: #1C1924;
+  transition: 0.4s;
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  opacity: 0;
+}
+.scrollTopButton svg {
+  width: 20px;
+}
+.scrollTopButton:hover {
+  filter: brightness(1.2);
+  box-shadow: 0px 67px 174px rgba(6, 5, 11, 0.21), 0px 38.0446px 72.693px rgba(6, 5, 11, 0.159087), 0px 29.6255px 38.8652px rgba(6, 5, 11, 0.141352), 0px 24.5041px 21.7875px rgba(6, 5, 11, 0.123617), 0px 18.9157px 11.5712px rgba(6, 5, 11, 0.0986536), 0px 11.1205px 4.81503px rgba(6, 5, 11, 0.060401);
+}
+
+.show {
+  pointer-events: all;
+  opacity: 1;
+}
+
+@media screen and (max-width: 450px) {
+  .scrollTopButton {
+    width: 36px;
+    height: 36px;
+  }
+  .scrollTopButton svg {
+    width: 16px;
+  }
+}

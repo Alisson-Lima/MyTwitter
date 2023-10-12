@@ -104,7 +104,7 @@ body {
 #App {
   width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 input {
@@ -136,28 +136,30 @@ button {
 }
 
 .main_container {
-  width: calc(100% - 400px);
-  margin-left: 400px;
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  width: calc(100% - 400px);
+  height: 100vh;
+  margin-left: 400px;
+  margin-top: -27px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   opacity: 0;
   animation: pageLoad 1s ease forwards;
   /* Track */
   /* Thumb */
 }
 .main_container::-webkit-scrollbar {
-  width: 5px;
+  width: 0;
 }
 .main_container::-webkit-scrollbar-track {
   background: transparent;
 }
 .main_container::-webkit-scrollbar-thumb {
-  background: #5B29E5;
-  border-radius: 8px;
+  background: transparent;
 }
 .main_container .main_container_inbox {
   max-width: 650px;
@@ -176,6 +178,10 @@ button {
 
 .btn_menu {
   display: none;
+}
+
+.border {
+  border: 1px solid red;
 }
 
 .show {
