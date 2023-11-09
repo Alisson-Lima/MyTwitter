@@ -13,7 +13,21 @@
     opacity: 0;
   }
 }
+.loginRegisterContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  padding: 70px 0;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+
 .loginRegister {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,7 +37,6 @@
   min-height: 600px;
   border-radius: 8px;
   background: #120F1A;
-  margin: calc(50vh - 300px) auto 0;
   padding: 64px 50px 32px;
   box-shadow: 0px 43px 82px rgba(0, 0, 0, 0.16), 0px 23.9816px 34.2576px rgba(0, 0, 0, 0.115017), 0px 13.8447px 18.3158px rgba(0, 0, 0, 0.0953772), 0px 7.74762px 10.2677px rgba(0, 0, 0, 0.08), 0px 3.87654px 5.45308px rgba(0, 0, 0, 0.0646228), 0px 1.43453px 2.26915px rgba(0, 0, 0, 0.0449833);
   transition: 0.5s;

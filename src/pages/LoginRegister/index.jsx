@@ -70,7 +70,7 @@ const LoginRegister = () => {
     }
 
   return (
-    <>
+    <div className="loginRegisterContainer">
         <div className="loginRegister">
             <div className="navLoginRegister">
                 {sideForm === "login" ? (
@@ -182,7 +182,7 @@ const LoginRegister = () => {
             </svg>
 
         </div>
-    </>
+    </div>
   )
 }
 
