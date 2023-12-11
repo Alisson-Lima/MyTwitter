@@ -2,7 +2,9 @@
 
 # My Twitter App
 
-Wellcome to My Twitter App, a app to share your thoughts
+Wellcome to My Twitter App, a app to share your thoughts!
+
+Visit the website here: https://my-twitter-swart.vercel.app
 
 ## Getting Started
 
