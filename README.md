@@ -1,4 +1,4 @@
-![Alt text](public/readmePhotos/bg-my-twitter-app.jpg)
+![Alt text](public/readmePhotos/bg-my-twitter-app.png)
 
 # My Twitter App
 
